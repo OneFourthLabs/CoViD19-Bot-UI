@@ -1,14 +1,9 @@
 {
-    "name": "appname",
-    "short_name": "appname",
+    "name": "CoronaBot",
+    "short_name": "CoronaBot",
     "icons": [{
-        "src": "./img/icons/android-chrome-192x192.png",
+        "src": "./img/icons/corona-favicon.png",
         "sizes": "192x192",
-        "type": "image/png"
-    },
-    {
-        "src": "./img/icons/android-chrome-512x512.png",
-        "sizes": "512x512",
         "type": "image/png"
     }],
     "start_url": "./index.html",
