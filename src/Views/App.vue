@@ -19,13 +19,13 @@
             <Welcome v-if="app && messages.length == 0" :app="app" />
 
             <!-- Suggestion dropdown -->
-            <Dropdown v-if="app && messages.length == 0" :app="app" />
+            <Dropdown v-if="app && messages.length == 0" :app="app" v-on:childToParent="onChildClick" />
 
             <!-- Messages Table -->
             <section v-else aria-live="polite">
 
                 <!-- Suggestion dropdown -->
-                <Dropdown :app="app" />
+                <Dropdown :app="app" v-on:childToParent="onChildClick" />
 
                 <div v-for="m in messages" id="message" :key="m.responseId">
                     <!-- My message -->
@@ -219,7 +219,7 @@
         </section>
 
         <!-- ChatInput is made for submitting queries and displaying suggestions -->
-        <ChatInput ref="input" @submit="send">
+        <ChatInput ref="input" @submit="send" :btnClickHandler="myFunc">
             <!-- Suggestion chips
                 https://developers.google.com/actions/assistant/responses#suggestion_chips
                 https://cloud.google.com/dialogflow/docs/reference/rest/v2beta1/projects.agent.intents#QuickReplies
@@ -485,6 +485,17 @@ export default {
                 speech.lang = `${this.lang()}-${this.lang().toUpperCase()}`
                 if (!this.muted) window.speechSynthesis.speak(speech) // <- if app is not muted, speak out the speech
             }
+        },
+        // Triggered when `childToParent` event is emitted by the child.
+        onChildClick (value) {
+            // alert(value);
+            // this.fromChild = value
+            this.myFunc(value);
+        },
+        myFunc(text = 'First time') {
+            ChatInput.query = text;
+            alert("123---->"+ChatInput.query);
+            return ChatInput.query;
         }
     }
 }

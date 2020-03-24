@@ -10,7 +10,7 @@
                     class="input"
                     type="text"
                     autofocus
-                    :query-msg="outlineOptions"
+                    v-bind="$props"
                     :placeholder="(translations[lang()] && translations[lang()].inputTitle) || translations[config.fallback_lang].inputTitle"
                     :aria-label="(translations[lang()] && translations[lang()].inputTitle) || translations[config.fallback_lang].inputTitle"
                     @keypress.enter="submit({text: query})"
@@ -101,6 +101,7 @@ export default {
     data(){
         return {
             query: '',
+            // query: this.btnClickHandler(),
             microphone: false,
             recognition: null,
             recorder: null,
@@ -129,6 +130,11 @@ export default {
 
             else if (this.recognition) this.recognition.abort()
             else if (this.recorder) this.recorder.stop()
+        },
+        // This would be called anytime the value of title changes
+        query(newValue, oldValue) {
+            // you can do anything here with the new value or old/previous value
+            alert(newValue+" ------ "+oldValue);
         }
     },
     created(){
@@ -176,6 +182,16 @@ export default {
 
             else if (submission.audio) this.$emit('submit', submission)
         }
+    },
+    props: {
+        btnClickHandler: {
+            type: Function
+        }
+    },
+    mounted() {
+        // Use the parent function directly here
+        // this.btnClickHandler();
+        this.query = this.btnClickHandler();
     }
 }
 </script>

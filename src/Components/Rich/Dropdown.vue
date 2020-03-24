@@ -1,7 +1,7 @@
 <template>
     <div>
-        <b-dropdown id="dropdown-1" text="Select query" class="m-md-2" v-model="outlineOptions">
-            <b-dropdown-item v-for="option in outlineOptions" :value="option.value" @click="onClick(option.value)">{{option.text}}</b-dropdown-item>
+        <b-dropdown id="dropdown-1" text="Select query" class="m-md-2" v-model="querySelection">
+            <b-dropdown-item v-for="option in outlineOptions" :value="option.value" :key="option.id" v-on:click="emitToParent($event)">{{option.text}}</b-dropdown-item>
             <!-- <b-dropdown-divider /> -->
         </b-dropdown>
     </div>
@@ -11,20 +11,21 @@
 export default {
     data(){
         return {
+            querySelection: '',
             outlineOptions: [
-                { text: 'What is coronavirus', value: 'What is coronavirus' },
-                { text: 'What is coronavirus', value: 'What is coronavirus' },
-                { text: 'What is coronavirus', value: 'What is coronavirus' }
+                { id: 0, text: 'What is coronavirus 1', value: 'What is coronavirus 1' },
+                { id: 1, text: 'What is coronavirus 2', value: 'What is coronavirus 2' },
+                { id: 2, text: 'What is coronavirus 3', value: 'What is coronavirus 3' }
             ]
         }
     },
-    props: ['query-msg'],
+    // props: ['query-msg'],
     methods: {
-        onClick(text){
-            alert(text);
-            // this.outlineOptions = text;
-            // Close the menu and (by passing true) return focus to the toggle button
-            // this.$refs.dropdown.hide(true)
+        // Define the method that emits data to the parent as the first parameter to `$emit()`.
+        // This is referenced in the <template> call in the parent. The second parameter is the payload.
+        emitToParent (event) {
+            // console.log(event.target.text);
+            this.$emit('childToParent', event.target.text)
         }
     }
 }
