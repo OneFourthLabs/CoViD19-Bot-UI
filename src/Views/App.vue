@@ -219,7 +219,7 @@
         </section>
 
         <!-- ChatInput is made for submitting queries and displaying suggestions -->
-        <ChatInput ref="input" @submit="send" :btnClickHandler="myFunc">
+        <ChatInput ref="input" @submit="send" :btnClickHandler="this.fromChild">
             <!-- Suggestion chips
                 https://developers.google.com/actions/assistant/responses#suggestion_chips
                 https://cloud.google.com/dialogflow/docs/reference/rest/v2beta1/projects.agent.intents#QuickReplies
@@ -326,7 +326,8 @@ export default {
             muted: this.config.muted,
             loading: false,
             error: null,
-            client: new df.Client(this.config.gateway).connect()
+            client: new df.Client(this.config.gateway).connect(),
+            fromChild: ''
         }
     },
     computed: {
@@ -488,14 +489,7 @@ export default {
         },
         // Triggered when `childToParent` event is emitted by the child.
         onChildClick (value) {
-            // alert(value);
-            // this.fromChild = value
-            this.myFunc(value);
-        },
-        myFunc(text = 'First time') {
-            ChatInput.query = text;
-            alert("123---->"+ChatInput.query);
-            return ChatInput.query;
+            this.fromChild = value
         }
     }
 }

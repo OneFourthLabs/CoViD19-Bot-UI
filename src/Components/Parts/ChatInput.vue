@@ -10,7 +10,6 @@
                     class="input"
                     type="text"
                     autofocus
-                    v-bind="$props"
                     :placeholder="(translations[lang()] && translations[lang()].inputTitle) || translations[config.fallback_lang].inputTitle"
                     :aria-label="(translations[lang()] && translations[lang()].inputTitle) || translations[config.fallback_lang].inputTitle"
                     @keypress.enter="submit({text: query})"
@@ -100,8 +99,8 @@ export default {
     name: 'ChatInput',
     data(){
         return {
-            query: '',
-            // query: this.btnClickHandler(),
+            // query: '',
+            query: this.btnClickHandler,
             microphone: false,
             recognition: null,
             recorder: null,
@@ -132,9 +131,10 @@ export default {
             else if (this.recorder) this.recorder.stop()
         },
         // This would be called anytime the value of title changes
-        query(newValue, oldValue) {
+        btnClickHandler(newValue, oldValue) {
             // you can do anything here with the new value or old/previous value
-            alert(newValue+" ------ "+oldValue);
+            // this.query = newValue;
+            this.submit({text: newValue});
         }
     },
     created(){
@@ -185,13 +185,8 @@ export default {
     },
     props: {
         btnClickHandler: {
-            type: Function
+            type: String
         }
-    },
-    mounted() {
-        // Use the parent function directly here
-        // this.btnClickHandler();
-        this.query = this.btnClickHandler();
     }
 }
 </script>

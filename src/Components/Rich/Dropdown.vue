@@ -13,9 +13,9 @@ export default {
         return {
             querySelection: '',
             outlineOptions: [
-                { id: 0, text: 'What is coronavirus 1', value: 'What is coronavirus 1' },
-                { id: 1, text: 'What is coronavirus 2', value: 'What is coronavirus 2' },
-                { id: 2, text: 'What is coronavirus 3', value: 'What is coronavirus 3' }
+                { id: 0, text: 'What is coronavirus', value: 'What is COVID-19' },
+                { id: 1, text: 'What is SARS', value: 'What is SARS' },
+                { id: 2, text: 'What is MERS', value: 'What is MERS' }
             ]
         }
     },
