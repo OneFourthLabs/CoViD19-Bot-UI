@@ -1,17 +1,58 @@
 <template>
-    <div>
+    <!-- <div>
         <b-dropdown size="lg"  variant="link" toggle-class="text-decoration-none" no-caret  v-model="querySelection">
             <template v-slot:button-content>
                 &#x1f50d;<span class="sr-only">Search</span>
             </template>
 
+            <b-dropdown-item class="dd-options" v-for="option in outlineOptions" :value="option.value" :key="option.id" v-on:click="emitToParent($event)">{{option.text}}</b-dropdown-item>
+        </b-dropdown>
+    </div> -->
 
-        <!-- <b-dropdown id="dropdown-offset" offset="25" dropup block menu-class="w-100" text="Select query" variant="dark" class="m-md-2" v-model="querySelection"> -->
-            <b-dropdown-item v-for="option in outlineOptions" :value="option.value" :key="option.id" v-on:click="emitToParent($event)">{{option.text}}</b-dropdown-item>
-            <!-- <b-dropdown-divider /> -->
+
+    <div>
+        <b-dropdown size="lg"  variant="link" toggle-class="text-decoration-none" no-caret id="dropdown-grouped" text="Dropdown with group" class="m-2">
+            <template v-slot:button-content>
+                &#x1f50d;<span class="sr-only">Search</span>
+            </template>
+            
+            <b-dropdown-group id="dropdown-group-1" header="Group 1">
+                <b-dropdown-item-button v-on:click="emitToParent($event)">How many deaths have occured in Italy over the last 10 days?</b-dropdown-item-button>
+                <b-dropdown-item-button>Second Grouped Item</b-dropdown-item-button>
+            </b-dropdown-group>
+
+            <b-dropdown-group id="dropdown-group-2" header="Group 2">
+                <b-dropdown-item-button>First Grouped item</b-dropdown-item-button>
+                <b-dropdown-item-button>Second Grouped Item</b-dropdown-item-button>
+            </b-dropdown-group>
+
+            <b-dropdown-divider></b-dropdown-divider>
         </b-dropdown>
     </div>
 </template>
+
+<style lang="sass">
+.dd-options a
+    width: 20.2rem
+    word-wrap: break-word !important
+    padding: 0.5rem 0.5rem !important
+    white-space: unset !important
+    line-height: 2
+
+.dropdown-menu
+    position: absolute
+    will-change: transform
+    border-radius: 20px
+    // box-shadow: grey 5px 5px
+    top: -1.2rem !important
+    left: 1rem !important
+    transform: translate3d(0px, -252px, 0px)
+    background-color: #e4e4e4
+
+
+</style>
+
+
 
 <script>
 export default {

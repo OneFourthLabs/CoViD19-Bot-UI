@@ -5,7 +5,7 @@
             <div class="suggestions"><slot /></div>
             <div class="flexible">
                 <!-- Suggestion dropdown -->
-            <Dropdown v-on:childToParent="onChildClick" />
+                <Dropdown v-on:childToParent="onChildClick" />
 
                 <!-- Text input -->
                 <input
