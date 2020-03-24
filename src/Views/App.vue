@@ -19,13 +19,13 @@
             <Welcome v-if="app && messages.length == 0" :app="app" />
 
             <!-- Suggestion dropdown -->
-            <Dropdown v-if="app && messages.length == 0" :app="app" v-on:childToParent="onChildClick" />
+            <!-- <Dropdown v-if="app && messages.length == 0" :app="app" v-on:childToParent="onChildClick" /> -->
 
             <!-- Messages Table -->
             <section v-else aria-live="polite">
 
                 <!-- Suggestion dropdown -->
-                <Dropdown :app="app" v-on:childToParent="onChildClick" />
+                <!-- <Dropdown :app="app" v-on:childToParent="onChildClick" /> -->
 
                 <div v-for="m in messages" id="message" :key="m.responseId">
                     <!-- My message -->
@@ -220,6 +220,9 @@
 
         <!-- ChatInput is made for submitting queries and displaying suggestions -->
         <ChatInput ref="input" @submit="send" :btnClickHandler="this.fromChild">
+            <!-- Suggestion dropdown -->
+            <Dropdown :app="app" v-on:childToParent="onChildClick" class="dd-container" />
+
             <!-- Suggestion chips
                 https://developers.google.com/actions/assistant/responses#suggestion_chips
                 https://cloud.google.com/dialogflow/docs/reference/rest/v2beta1/projects.agent.intents#QuickReplies
@@ -238,6 +241,7 @@
                 https://developers.google.com/actions/assistant/responses#suggestion_chips
                 https://cloud.google.com/dialogflow/docs/reference/rest/v2beta1/projects.agent.intents#LinkOutSuggestion
             -->
+            
             <Suggestion
                 v-if="suggestions.link_suggestion"
                 :title="suggestions.link_suggestion.destinationName"
@@ -263,6 +267,16 @@ body
     margin-right: auto
     padding: 12px
     position: relative
+
+.dd-container
+    max-width: 500px
+    margin-left: auto
+    margin-right: auto
+    padding: 12px
+    position: relative
+
+ul.dropdown-menu
+    z-index: 999999
 </style>
 
 <style lang="sass" scoped>

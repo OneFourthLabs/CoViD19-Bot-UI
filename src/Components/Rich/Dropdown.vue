@@ -1,11 +1,19 @@
 <template>
-    <div>
-        <b-dropdown id="dropdown-1" text="Select query" class="m-md-2" v-model="querySelection">
+    <div class="dd-cls">
+        <b-dropdown id="dropdown-offset" offset="25" dropup block menu-class="w-100" text="Select query" variant="dark" class="m-md-2" v-model="querySelection">
             <b-dropdown-item v-for="option in outlineOptions" :value="option.value" :key="option.id" v-on:click="emitToParent($event)">{{option.text}}</b-dropdown-item>
             <!-- <b-dropdown-divider /> -->
         </b-dropdown>
     </div>
 </template>
+
+<style lang="sass">
+
+.dd-cls 
+    margin-left: -10px
+    margin-botton: 10px
+
+</style>
 
 <script>
 export default {
