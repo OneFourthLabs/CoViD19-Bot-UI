@@ -18,8 +18,15 @@
             <!-- Welcome component is for onboarding experience and language picker -->
             <Welcome v-if="app && messages.length == 0" :app="app" />
 
+            <!-- Suggestion dropdown -->
+            <Dropdown v-if="app && messages.length == 0" :app="app" />
+
             <!-- Messages Table -->
             <section v-else aria-live="polite">
+
+                <!-- Suggestion dropdown -->
+                <Dropdown :app="app" />
+
                 <div v-for="m in messages" id="message" :key="m.responseId">
                     <!-- My message -->
                     <BubbleWrapper><Bubble v-if="m.queryResult.queryText" :text="m.queryResult.queryText" me /></BubbleWrapper>
@@ -283,6 +290,7 @@ import Picture from '@/Components/Rich/Picture.vue'
 import Media from '@/Components/Rich/Media.vue'
 import TableCard from '@/Components/Rich/TableCard.vue'
 import Suggestion from '@/Components/Rich/Suggestion.vue'
+import Dropdown from '@/Components/Rich/Dropdown.vue'
 
 import * as uuidv1 from 'uuid/v1'
 
@@ -306,7 +314,8 @@ export default {
         Picture,
         Media,
         TableCard,
-        Suggestion
+        Suggestion,
+        Dropdown
     },
     data(){
         return {

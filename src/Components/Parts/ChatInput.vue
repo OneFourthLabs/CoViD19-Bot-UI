@@ -10,6 +10,7 @@
                     class="input"
                     type="text"
                     autofocus
+                    :query-msg="outlineOptions"
                     :placeholder="(translations[lang()] && translations[lang()].inputTitle) || translations[config.fallback_lang].inputTitle"
                     :aria-label="(translations[lang()] && translations[lang()].inputTitle) || translations[config.fallback_lang].inputTitle"
                     @keypress.enter="submit({text: query})"
