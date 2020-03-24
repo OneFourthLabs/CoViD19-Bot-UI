@@ -4,6 +4,9 @@
             <!-- Here are the suggestions -->
             <div class="suggestions"><slot /></div>
             <div class="flexible">
+                <!-- Suggestion dropdown -->
+            <Dropdown v-on:childToParent="onChildClick" />
+
                 <!-- Text input -->
                 <input
                     v-model="query"
@@ -94,17 +97,23 @@
 </style>
 
 <script>
+import Dropdown from '@/Components/Rich/Dropdown.vue'
+
 window.MediaRecorder = require('audio-recorder-polyfill')
 export default {
     name: 'ChatInput',
+    components: {
+        Dropdown
+    },
     data(){
         return {
-            // query: '',
-            query: this.btnClickHandler,
+            query: '',
+            // query: this.btnClickHandler,
             microphone: false,
             recognition: null,
             recorder: null,
-            should_listen: true
+            should_listen: true,
+            fromChild: ''
         }
     },
     computed: {
@@ -131,9 +140,9 @@ export default {
             else if (this.recorder) this.recorder.stop()
         },
         // This would be called anytime the value of title changes
-        btnClickHandler(newValue, oldValue) {
+        fromChild(newValue, oldValue) {
             // you can do anything here with the new value or old/previous value
-            // this.query = newValue;
+            // alert("111---"+newValue+" --- "+oldValue);
             this.submit({text: newValue});
         }
     },
@@ -181,12 +190,18 @@ export default {
             }
 
             else if (submission.audio) this.$emit('submit', submission)
+        },
+        // Triggered when `childToParent` event is emitted by the child.
+        onChildClick (value) {
+            // alert(value);
+            this.fromChild = value
+            // this.query = value
         }
     },
-    props: {
-        btnClickHandler: {
-            type: String
-        }
-    }
+    // props: {
+    //     btnClickHandler: {
+    //         type: String
+    //     }
+    // }
 }
 </script>

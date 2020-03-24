@@ -219,10 +219,8 @@
         </section>
 
         <!-- ChatInput is made for submitting queries and displaying suggestions -->
-        <ChatInput ref="input" @submit="send" :btnClickHandler="this.fromChild">
-            <!-- Suggestion dropdown -->
-            <Dropdown :app="app" v-on:childToParent="onChildClick" class="dd-container" />
-
+        <!-- <ChatInput ref="input" @submit="send" :btnClickHandler="this.fromChild"> -->
+        <ChatInput ref="input" @submit="send">
             <!-- Suggestion chips
                 https://developers.google.com/actions/assistant/responses#suggestion_chips
                 https://cloud.google.com/dialogflow/docs/reference/rest/v2beta1/projects.agent.intents#QuickReplies
@@ -247,6 +245,9 @@
                 :title="suggestions.link_suggestion.destinationName"
                 :url="suggestions.link_suggestion.uri || suggestions.link_suggestion.url"
             />
+
+            <!-- Suggestion dropdown -->
+            <!-- <Dropdown :app="app" v-on:childToParent="onChildClick" class="dd-container" /> -->
         </ChatInput>
     </main>
 </template>
@@ -274,9 +275,6 @@ body
     margin-right: auto
     padding: 12px
     position: relative
-
-ul.dropdown-menu
-    z-index: 999999
 </style>
 
 <style lang="sass" scoped>
@@ -304,7 +302,7 @@ import Picture from '@/Components/Rich/Picture.vue'
 import Media from '@/Components/Rich/Media.vue'
 import TableCard from '@/Components/Rich/TableCard.vue'
 import Suggestion from '@/Components/Rich/Suggestion.vue'
-import Dropdown from '@/Components/Rich/Dropdown.vue'
+// import Dropdown from '@/Components/Rich/Dropdown.vue'
 
 import * as uuidv1 from 'uuid/v1'
 
@@ -329,7 +327,7 @@ export default {
         Media,
         TableCard,
         Suggestion,
-        Dropdown
+        // Dropdown
     },
     data(){
         return {
@@ -341,7 +339,7 @@ export default {
             loading: false,
             error: null,
             client: new df.Client(this.config.gateway).connect(),
-            fromChild: ''
+            // fromChild: ''
         }
     },
     computed: {
@@ -502,9 +500,9 @@ export default {
             }
         },
         // Triggered when `childToParent` event is emitted by the child.
-        onChildClick (value) {
-            this.fromChild = value
-        }
+        // onChildClick (value) {
+        //     this.fromChild = value
+        // }
     }
 }
 </script>
