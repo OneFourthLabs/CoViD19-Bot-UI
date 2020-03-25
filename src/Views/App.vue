@@ -1,5 +1,5 @@
 <template>
-    <main id="app">
+    <main id="app" style="max-width: 30rem;margin: 0 auto;">
         <!-- TopHead is the header with the information about the app -->
         <!-- <TopHead v-if="app && messages.length > 0" :app="app" style="background-color: #313742;"  v-on:topheadToApp="onDataFromTophead"> -->
         <TopHead :app="app" style="background-color: #313742;"  v-on:topheadToApp="onDataFromTophead">
@@ -276,6 +276,12 @@ body
     margin-right: auto
     padding: 12px
     position: relative
+
+// .audio-toggle
+//     right: 46rem !important
+//     background-color: rgb(49, 55, 66) !important
+//     color: white !important
+
 </style>
 
 <style lang="sass" scoped>

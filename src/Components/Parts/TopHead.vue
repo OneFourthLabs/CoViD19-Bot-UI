@@ -23,7 +23,7 @@
     z-index: 666
     padding: 12px
     position: fixed
-    width: 100%
+    width: auto
 
     @media screen and (max-width: 1000px)
         background-color: var(--background)
@@ -74,7 +74,7 @@
 .suggestion-btn
     margin-left: var(--suggestion-btn-mrgn-left)
     margin-top: var(--suggestion-btn-mrgn-top)
-    width: 120rem
+    width: 29.5rem
 
 .report-btn
     margin-left: var(--report-btn-mrgn-left)
