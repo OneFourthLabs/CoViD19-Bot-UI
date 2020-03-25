@@ -29,67 +29,44 @@
 
             <b-dropdown-divider></b-dropdown-divider>
 
-            <b-dropdown-group id="dropdown-group-2" header="What is the difference between A and B?">
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">What is the difference between epidemic and pandemic?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">What is the difference between isolation and quarantine?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">What is the difference between MERS and SARS?</b-dropdown-item-button>
+            <b-dropdown-group id="dropdown-group-3" header="Recommendations">
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I spray alcohol on my body</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I take a flu shot</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I rinse my noise</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Is it safe to travel by air</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Is it safe to sit in an air conditioned office </b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Is it safe to go for a walk</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I eat garlic</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I take H1NI vaccine</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I take a flu shot</b-dropdown-item-button>
             </b-dropdown-group>
 
             <b-dropdown-divider></b-dropdown-divider>
 
-            <b-dropdown-group id="dropdown-group-2" header="Should I do X ?">
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I spray alcohol on my body ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I take a flu shot ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I rinse my noise ?</b-dropdown-item-button>
+            <b-dropdown-group id="dropdown-group-4" header="Info">
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">What is coronavirus</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long does the treatment take</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long should I stay in quarantine</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long will it take for me to fully recover</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long does the virus survive on plastic</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long does the virus survive on glass</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long does the virus survive on metal surfaces</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Can the disease spread from an asymptomatic person</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Can the disease spread from soil</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Can the disease spread from water</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">What is the difference between epidemic and pandemic</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">What is the difference between isolation and quarantine</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">What is the difference between MERS and SARS</b-dropdown-item-button>
             </b-dropdown-group>
 
             <b-dropdown-divider></b-dropdown-divider>
 
-            <b-dropdown-group id="dropdown-group-2" header="How long does X last ?">
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long does the treatment take ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long should I stay in quarantine ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long will it take for me to fully recover ?</b-dropdown-item-button>
+            <b-dropdown-group id="dropdown-group-5" header="Procedures">
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How to disinfect my phone</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How to disinfect my car</b-dropdown-item-button>
+                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How to disinfect my room</b-dropdown-item-button>
             </b-dropdown-group>
 
-            <b-dropdown-divider></b-dropdown-divider>
-
-            <b-dropdown-group id="dropdown-group-2" header="How to disinfect X ?">
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How to disinfect my phone ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How to disinfect my car ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How to disinfect my room ?</b-dropdown-item-button>
-            </b-dropdown-group>
-
-            <b-dropdown-divider></b-dropdown-divider>
-
-            <b-dropdown-group id="dropdown-group-2" header="Is it safe to do X ?">
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Is it safe to travel by air ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Is it safe to sit in an air conditioned office ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Is it safe to go for a walk ?</b-dropdown-item-button>
-            </b-dropdown-group>
-
-            <b-dropdown-divider></b-dropdown-divider>
-
-            <b-dropdown-group id="dropdown-group-2" header="How long does the virus survive on X?">
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long does the virus survive on plastic ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long does the virus survive on glass ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">How long does the virus survive on metal surfaces ?</b-dropdown-item-button>
-            </b-dropdown-group>
-
-            <b-dropdown-divider></b-dropdown-divider>
-
-            <b-dropdown-group id="dropdown-group-2" header="Does disease spread through X?">
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Can the disease spread from an asymptomatic person ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Can the disease spread from soil ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Can the disease spread from water ?</b-dropdown-item-button>
-            </b-dropdown-group>
-
-            <b-dropdown-divider></b-dropdown-divider>
-
-            <b-dropdown-group id="dropdown-group-2" header="Should I consume X ?">
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I eat garlic ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I take H1NI vaccine ?</b-dropdown-item-button>
-                <b-dropdown-item-button class="dd-options" v-on:click="emitToParent($event)">Should I take a flu shot ?</b-dropdown-item-button>
-            </b-dropdown-group>
 
             <!-- <b-dropdown-divider></b-dropdown-divider>
 
@@ -120,7 +97,7 @@
     top: -1.2rem !important
     left: 1rem !important
     transform: translate3d(0px, -252px, 0px)
-    background-color: #e4e4e4
+    background-color: #F1F3F4
     overflow-y: scroll
     height: 16rem
 
