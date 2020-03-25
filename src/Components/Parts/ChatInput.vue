@@ -3,10 +3,14 @@
         <div class="container">
             <!-- Here are the suggestions -->
             <div class="suggestions"><slot /></div>
-            <div class="flexible">
-                <!-- Suggestion dropdown -->
-                <Dropdown v-on:childToParent="onChildClick" />
 
+            <!-- Suggestion dropdown -->
+            <!-- <Dropdown v-on:childToParent="onChildClick" class="suggestion-btn" /> -->
+
+            <!-- Report dropdown -->
+            <!-- <Dropdownform class="report-btn" /> -->
+
+            <div class="flexible">
                 <!-- Text input -->
                 <input
                     v-model="query"
@@ -94,17 +98,31 @@
     &.mic_active
         background-color: #F44336
         color: white
+
+// .suggestion-btn
+//     position: absolute !important
+//     left: var(--suggestion-btn-left)
+//     bottom: var(--suggestion-btn-bottom)
+//     background-color: #313742
+//     width: 120rem
+
+// .report-btn
+//     position: absolute
+//     left: -35rem
+//     bottom: 30rem
 </style>
 
 <script>
-import Dropdown from '@/Components/Rich/Dropdown.vue'
+// import Dropdown from '@/Components/Rich/Dropdown.vue'
+// import Dropdownform from '@/Components/Rich/Dropdownform.vue'
 
 window.MediaRecorder = require('audio-recorder-polyfill')
 export default {
     name: 'ChatInput',
-    components: {
-        Dropdown
-    },
+    // components: {
+    //     Dropdown,
+    //     Dropdownform
+    // },
     data(){
         return {
             query: '',
@@ -113,7 +131,7 @@ export default {
             recognition: null,
             recorder: null,
             should_listen: true,
-            fromChild: ''
+            // fromChild: ''
         }
     },
     computed: {
@@ -140,9 +158,9 @@ export default {
             else if (this.recorder) this.recorder.stop()
         },
         // This would be called anytime the value of title changes
-        fromChild(newValue, oldValue) {
+        btnClickHandler(newValue, oldValue) {
             // you can do anything here with the new value or old/previous value
-            // alert("111---"+newValue+" --- "+oldValue);
+            // alert("In ChatInput Watch ---> "+newValue+" --- "+oldValue);
             this.submit({text: newValue});
         }
     },
@@ -192,16 +210,16 @@ export default {
             else if (submission.audio) this.$emit('submit', submission)
         },
         // Triggered when `childToParent` event is emitted by the child.
-        onChildClick (value) {
-            // alert(value);
-            this.fromChild = value
-            // this.query = value
-        }
+        // onChildClick (value) {
+        //     // alert(value);
+        //     this.fromChild = value
+        //     // this.query = value
+        // }
     },
-    // props: {
-    //     btnClickHandler: {
-    //         type: String
-    //     }
-    // }
+    props: {
+        btnClickHandler: {
+            type: String
+        }
+    }
 }
 </script>

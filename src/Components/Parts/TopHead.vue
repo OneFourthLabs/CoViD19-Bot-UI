@@ -6,7 +6,14 @@
             <div class="app-name">{{app.displayName}}</div>
         </div>
         <slot />
+        
+        <!-- Suggestion dropdown -->
+        <Dropdown class="suggestion-btn" v-on:dropdownToTophead="onDropdownClick" />
+
+        <!-- Report dropdown -->
+        <Dropdownform class="report-btn" />
     </header>
+
 </template>
 
 <style lang="sass" scoped>
@@ -35,7 +42,7 @@
         .app-name
             font-size: 18px
             font-weight: 500
-            color: var(--text)
+            color: var(--text-logo)
             line-height: 15px
 
         .app-poweredby
@@ -63,11 +70,40 @@
 
     &:hover
         padding-right: 20px
+
+.suggestion-btn
+    margin-left: var(--suggestion-btn-mrgn-left)
+    margin-top: var(--suggestion-btn-mrgn-top)
+    width: 120rem
+
+.report-btn
+    margin-left: var(--report-btn-mrgn-left)
+    margin-top: var(--report-btn-mrgn-top)
 </style>
 
 <script>
+import Dropdown from '@/Components/Rich/Dropdown.vue'
+import Dropdownform from '@/Components/Rich/Dropdownform.vue'
+
 export default {
     name: 'TopHead',
+    data(){
+        return {
+            fromChild: ''
+        }
+    },
+    components: {
+        Dropdown,
+        Dropdownform
+    },
+    methods: {
+        // Triggered when `dropdownToTophead` event is emitted by the child.
+        onDropdownClick (value) {
+            // alert("In Tophead --> "+value);
+            // this.fromChild = value
+            this.$emit('topheadToApp', value)
+        }
+    },
     props: {
         app: {
             type: Object,

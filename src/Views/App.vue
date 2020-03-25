@@ -1,7 +1,7 @@
-<template>
+<template style="max-width:600px; align: cener;">
     <main id="app">
         <!-- TopHead is the header with the information about the app -->
-        <TopHead v-if="app && messages.length > 0" :app="app">
+        <TopHead v-if="app && messages.length > 0" :app="app" style="background-color: #313742;"  v-on:topheadToApp="onDataFromTophead">
             <!-- Audio toggle (on the top right corner), used to toggle the audio output, default mode is defined in the settings -->
             <button
                 class="audio-toggle"
@@ -219,8 +219,8 @@
         </section>
 
         <!-- ChatInput is made for submitting queries and displaying suggestions -->
-        <!-- <ChatInput ref="input" @submit="send" :btnClickHandler="this.fromChild"> -->
-        <ChatInput ref="input" @submit="send">
+        <ChatInput ref="input" @submit="send" :btnClickHandler="this.fromChild">
+        <!-- <ChatInput ref="input" @submit="send"> -->
             <!-- Suggestion chips
                 https://developers.google.com/actions/assistant/responses#suggestion_chips
                 https://cloud.google.com/dialogflow/docs/reference/rest/v2beta1/projects.agent.intents#QuickReplies
@@ -339,7 +339,7 @@ export default {
             loading: false,
             error: null,
             client: new df.Client(this.config.gateway).connect(),
-            // fromChild: ''
+            fromChild: 'asdasd'
         }
     },
     computed: {
@@ -498,6 +498,11 @@ export default {
                 speech.lang = `${this.lang()}-${this.lang().toUpperCase()}`
                 if (!this.muted) window.speechSynthesis.speak(speech) // <- if app is not muted, speak out the speech
             }
+        },
+        // Triggered when `dropdownToTophead` event is emitted by the child.
+        onDataFromTophead (value) {
+            // alert("In App --> "+value);
+            this.fromChild = value
         },
         // Triggered when `childToParent` event is emitted by the child.
         // onChildClick (value) {
