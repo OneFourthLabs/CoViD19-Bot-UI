@@ -1,7 +1,8 @@
-<template style="max-width:600px; align: cener;">
+<template>
     <main id="app">
         <!-- TopHead is the header with the information about the app -->
-        <TopHead v-if="app && messages.length > 0" :app="app" style="background-color: #313742;"  v-on:topheadToApp="onDataFromTophead">
+        <!-- <TopHead v-if="app && messages.length > 0" :app="app" style="background-color: #313742;"  v-on:topheadToApp="onDataFromTophead"> -->
+        <TopHead :app="app" style="background-color: #313742;"  v-on:topheadToApp="onDataFromTophead">
             <!-- Audio toggle (on the top right corner), used to toggle the audio output, default mode is defined in the settings -->
             <button
                 class="audio-toggle"
@@ -16,13 +17,13 @@
             <Error v-if="error" :error="error" />
 
             <!-- Welcome component is for onboarding experience and language picker -->
-            <Welcome v-if="app && messages.length == 0" :app="app" />
+            <Welcome v-if="app && messages.length == 0" :app="app" style="margin-top: 4rem;" />
 
             <!-- Suggestion dropdown -->
             <!-- <Dropdown v-if="app && messages.length == 0" :app="app" v-on:childToParent="onChildClick" /> -->
 
             <!-- Messages Table -->
-            <section v-else aria-live="polite">
+            <section v-else aria-live="polite" style="margin-top: 4rem;">
 
                 <!-- Suggestion dropdown -->
                 <!-- <Dropdown :app="app" v-on:childToParent="onChildClick" /> -->

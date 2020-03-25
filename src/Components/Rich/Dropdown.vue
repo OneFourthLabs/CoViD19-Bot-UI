@@ -128,32 +128,32 @@
 .dropdown-divider 
     border-top: 1px solid #bbbbbb !important
 
-.overlay 
-    height: 100%
-    width: 0
-    display: none
-    position: fixed
-    z-index: 1
-    top: 0
-    left: 0
-    background-color: var(--overlay-background-color)
-    background-color: var(--overlay-background-color-a)
-    overflow-x: hidden
-    transition: 0.5s
+// .overlay 
+//     height: 100%
+//     width: 0
+//     display: none
+//     position: fixed
+//     z-index: 1
+//     top: 0
+//     left: 0
+//     background-color: var(--overlay-background-color)
+//     background-color: var(--overlay-background-color-a)
+//     overflow-x: hidden
+//     transition: 0.5s
 
-.overlay a 
-    padding: 8px
-    text-decoration: none
-    font-size: 36px
-    color: var(--text)
-    display: block
-    transition: 0.3s
+// .overlay a 
+//     padding: 8px
+//     text-decoration: none
+//     font-size: 36px
+//     color: var(--text)
+//     display: block
+//     transition: 0.3s
 
-.overlay .closebtn 
-    position: absolute
-    top: var(--overlay-close-top)
-    right: var(--overlay-close-right)
-    font-size: var(--overlay-close-font-size)
+// .overlay .closebtn 
+//     position: absolute
+//     top: var(--overlay-close-top)
+//     right: var(--overlay-close-right)
+//     font-size: var(--overlay-close-font-size)
 </style>
 
 
