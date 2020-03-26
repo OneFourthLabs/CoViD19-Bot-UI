@@ -12,6 +12,9 @@
 
         <!-- Report dropdown -->
         <Dropdownform class="report-btn" v-on:dropdownformToTophead="onDropdownformClick" />
+
+        <!-- Help dropdown -->
+        <Dropdownformhelp class="help-btn" v-on:dropdownformhelpToTophead="onDropdownformhelpClick" />
     </header>
 
 </template>
@@ -79,6 +82,10 @@
 .report-btn
     margin-left: var(--report-btn-mrgn-left)
     margin-top: var(--report-btn-mrgn-top)
+
+.help-btn
+    margin-left: var(--help-btn-mrgn-left)
+    margin-top: var(--help-btn-mrgn-top)
 </style>
 
 <script>
@@ -106,6 +113,11 @@ export default {
             this.$emit('topheadToApp', value)
         },
         onDropdownformClick (value) {
+            // alert("In Tophead --> "+value);
+            // this.fromChild = value
+            this.$emit('topheadToApp', value)
+        },
+        onDropdownformhelpClick (value) {
             // alert("In Tophead --> "+value);
             // this.fromChild = value
             this.$emit('topheadToApp', value)

@@ -129,44 +129,43 @@ export default {
         long: '',
         datetime: ''
       },
-      // report_categories: [{ text: 'Select reporting category', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
       report_categories: [
         { value: null, text: 'Select reporting category' },
         {
           label: 'Household items',
           options: [
-            { value: { Household_items: 'Vegetables' }, text: 'Vegetables' },
-            { value: { Household_items: 'Drinking Water'}, text: 'Drinking Water' },
-            { value: { Household_items: 'Milk'}, text: 'Milk' },
-            { value: { Household_items: 'Atta'}, text: 'Atta' },
-            { value: { Household_items: 'Rice'}, text: 'Rice' },
-            { value: { Household_items: 'Other grocery items' }, text: 'Other grocery items' },
-            { value: { Household_items: 'Toiletries' }, text: 'Toiletries' }
+            { value: { "main": 'Household items', "sub": 'Vegetables' }, text: 'Vegetables' },
+            { value: { "main": 'Household items', "sub": 'Drinking Water'}, text: 'Drinking Water' },
+            { value: { "main": 'Household items', "sub": 'Milk'}, text: 'Milk' },
+            { value: { "main": 'Household items', "sub": 'Atta'}, text: 'Atta' },
+            { value: { "main": 'Household items', "sub": 'Rice'}, text: 'Rice' },
+            { value: { "main": 'Household items', "sub": 'Other grocery items' }, text: 'Other grocery items' },
+            { value: { "main": 'Household items', "sub": 'Toiletries' }, text: 'Toiletries' }
           ]
         },
         {
           label: 'Medical supplies',
           options: [
-            { value: { Medical_supplies: 'Masks' }, text: 'Masks' },
-            { value: { Medical_supplies: 'Gloves' }, text: 'Gloves' },
-            { value: { Medical_supplies: 'Sanitisers' }, text: 'Sanitisers' }
+            { value: { "main": 'Medical supplies', "sub": 'Masks' }, text: 'Masks' },
+            { value: { "main": 'Medical supplies', "sub": 'Gloves' }, text: 'Gloves' },
+            { value: { "main": 'Medical supplies', "sub": 'Sanitisers' }, text: 'Sanitisers' }
           ]
         },
         {
           label: 'Violations',
           options: [
-            { value: { Violations: 'Hoarding' }, text: 'Hoarding' },
-            { value: { Violations: 'Violating Social distancing' }, text: 'Violating Social distancing ' },
-            { value: { Violations: 'Violating Curfew' }, text: 'Violating Curfew' },
-            { value: { Violations: 'Violating' }, text: 'Violating ' }
+            { value: { "main": 'Violations', "sub": 'Hoarding' }, text: 'Hoarding' },
+            { value: { "main": 'Violations', "sub": 'Violating Social distancing' }, text: 'Violating Social distancing ' },
+            { value: { "main": 'Violations', "sub": 'Violating Curfew' }, text: 'Violating Curfew' },
+            { value: { "main": 'Violations', "sub": 'Violating' }, text: 'Violating ' }
           ]
         },
         {
           label: 'Emergencies',
           options: [
-            { value: { Emergencies: 'I have symptoms of corona' }, text: 'I have symptoms of corona' },
-            { value: { Emergencies: 'I need to see a doctor' }, text: 'I need to see a doctor' },
-            { value: { Emergencies: 'I need an ambulance' }, text: 'I need an ambulance' }
+            { value: { "main": 'Emergencies', "sub": 'I have symptoms of corona' }, text: 'I have symptoms of corona' },
+            { value: { "main": 'Emergencies', "sub": 'I need to see a doctor' }, text: 'I need to see a doctor' },
+            { value: { "main": 'Emergencies', "sub": 'I need an ambulance' }, text: 'I need an ambulance' }
           ]
         }
       ],
@@ -178,10 +177,11 @@ export default {
       evt.preventDefault()
       if(this.form.checked == "share_location") {
         console.log(JSON.stringify(this.form))
+        return false
         this.$http.post ( 'http://34.66.213.160/post_report', JSON.stringify(this.form) ).then(function () {
           this.onClick()
           this.onReset(evt)
-          this.$emit('dropdownformToTophead', 'Submit my request for help')
+          this.$emit('dropdownformToTophead', 'Submit my report')
         });
       } else {
         alert("Pleae click the checkbox and agree to share location details")
