@@ -11,7 +11,7 @@
         <Dropdown class="suggestion-btn" v-on:dropdownToTophead="onDropdownClick" />
 
         <!-- Report dropdown -->
-        <Dropdownform class="report-btn" />
+        <Dropdownform class="report-btn" v-on:dropdownformToTophead="onDropdownformClick" />
     </header>
 
 </template>
@@ -99,6 +99,11 @@ export default {
     methods: {
         // Triggered when `dropdownToTophead` event is emitted by the child.
         onDropdownClick (value) {
+            // alert("In Tophead --> "+value);
+            // this.fromChild = value
+            this.$emit('topheadToApp', value)
+        },
+        onDropdownformClick (value) {
             // alert("In Tophead --> "+value);
             // this.fromChild = value
             this.$emit('topheadToApp', value)

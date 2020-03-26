@@ -115,6 +115,7 @@ export default {
         name: '',
         phone: '',
         email: '',
+        report_message: '',
         report_category: null,
         checked: [],
         lat: '',
@@ -172,6 +173,7 @@ export default {
         this.$http.post ( 'http://34.66.213.160/post_report', JSON.stringify(this.form) ).then(function () {
           this.onClick()
           this.onReset(evt)
+          this.$emit('dropdownformToTophead', 'Submit my request for help')
         });
       } else {
         alert("Pleae click the checkbox and agree to share location details")
@@ -207,6 +209,7 @@ export default {
       this.form.email = ''
       this.form.lat = ''
       this.form.long = ''
+      this.form.report_message = ''
       this.form.report_category = null
       this.form.checked = []
       // Trick to reset/clear native browser form validation state
