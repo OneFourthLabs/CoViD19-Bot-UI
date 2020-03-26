@@ -1,7 +1,12 @@
 <template>
   <div>
-    <b-dropdown id="dropdown-form" text="Need Help/Volunteer" ref="dropdown" class="m-2">
-     <b-form @submit="onSubmit" v-if="show" class="dd-form">
+    <b-dropdown id="dropdown-form-help" text="Need Help/Volunteer" ref="dropdown" class="m-2">
+     <b-form @submit="onSubmit" v-if="show" class="dd-form-help">
+
+      <b-form-group id="form-input-help_type" label="" label-for="input-help_type" class="help-input">
+        <b-form-radio v-model="form.help_type" name="help_type-radios" value="help">I Need Help</b-form-radio>
+        <b-form-radio v-model="form.help_type" name="help_type-radios" value="volunteer">I Want to Help</b-form-radio>
+      </b-form-group>
 
       <b-form-group id="form-input-name" label="" label-for="input-name">
         <b-form-input
@@ -9,7 +14,7 @@
           v-model="form.name"
           required
           placeholder="Enter name"
-          class="report-input"
+          class="help-input"
         ></b-form-input>
       </b-form-group>
 
@@ -21,7 +26,7 @@
           max-length="12"
           required
           placeholder="Enter phone number"
-          class="report-input"
+          class="help-input"
         ></b-form-input>
       </b-form-group>
 
@@ -31,13 +36,8 @@
           v-model="form.email"
           type="email"
           placeholder="Enter email (optional)"
-          class="report-input"
+          class="help-input"
         ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="form-input-help_type" label="" label-for="input-help_type" class="report-input">
-        <b-form-radio v-model="form.help_type" name="help_type-radios" value="help">I Need Help</b-form-radio>
-        <b-form-radio v-model="form.help_type" name="help_type-radios" value="volunteer">I Want to Help</b-form-radio>
       </b-form-group>
 
       <b-form-group id="form-input-help_category" label="" label-for="input-help_category">
@@ -45,7 +45,7 @@
           id="input-help_category"
           v-model="form.help_category"
           :options="help_categories"
-          class="report-input"
+          class="help-input"
           required
         ></b-form-select>
       </b-form-group>
@@ -56,14 +56,14 @@
           v-model="form.help_message"
           type="text"
           placeholder="Enter your message (optional)"
-          class="report-input"
+          class="help-input"
         ></b-form-textarea>
       </b-form-group>
 
       <b-form-group id="form-input-check">
         <b-form-checkbox-group v-model="form.checked" id="checkboxes-location">
-          <b-form-checkbox value="share_location" class="report-input" style="margin-top: 0rem; margin-bottom: 0rem;" @input="getLocation" required>Agree to share location</b-form-checkbox>
-          <b-form-checkbox value="share_contact" class="report-input" style="margin-top: 0rem;" required>Agree to share contact information</b-form-checkbox>
+          <b-form-checkbox value="share_location" class="help-input" style="margin-top: 0rem; margin-bottom: 0rem;" @input="getLocation" required>Agree to share location</b-form-checkbox>
+          <b-form-checkbox value="share_contact" class="help-input" style="margin-top: 0rem;" required>Agree to share contact information</b-form-checkbox>
         </b-form-checkbox-group>
       </b-form-group>
 
@@ -72,28 +72,28 @@
           id="input-lat"
           v-model="form.lat"
           placeholder="Enter latitude"
-          class="report-input"
+          class="help-input"
         ></b-form-input>
 
         <b-form-input
           id="input-long"
           v-model="form.long"
           placeholder="Enter longitude"
-          class="report-input"
+          class="help-input"
         ></b-form-input>
 
         <b-form-input
           id="input-datetime"
           v-model="form.datetime"
           placeholder="Enter date time"
-          class="report-input"
+          class="help-input"
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" id="submit_loader_help" variant="primary" class="report-sbmt-btn">Submit</b-button>
+      <b-button type="submit" id="submit_loader_help" variant="primary" class="help-sbmt-btn">Submit</b-button>
       
       <!-- Loader button -->
-      <b-button class="report-sbmt-btn" variant="primary" disabled id="loader_help" style="display:none">
+      <b-button class="help-sbmt-btn" variant="primary" disabled id="loader_help" style="display:none">
         <b-spinner small type="grow"></b-spinner>
         Submitting...
       </b-button>
@@ -104,28 +104,29 @@
 </template>
 
 <style lang="sass">
-.dd-form
-    width: var(--dd-form-width)
+.dd-form-help
+    width: var(--dd-form-help-width) !important
 
-#dropdown-form ul
-    height: var(--dd-form-height)
+#dropdown-form-help ul
+    height: var(--dd-form-help-height) !important
     overflow: auto
+    margin-left: var(--dd-form-help-mrgn-left)
 
-#dropdown-form button
+#dropdown-form-help button
     margin-left: 1rem
 
-.report-input
-    height: var(--report-input-height) 
-    width: var(--report-input-width)
-    margin-top: var(--report-input-mrgn-top)
-    margin-left: var(--report-input-mrgn-left)
+.help-input
+    height: var(--help-input-height) 
+    width: var(--help-input-width)
+    margin-top: var(--help-input-mrgn-top)
+    margin-left: var(--help-input-mrgn-left)
     color: var(--text-subtitle)
 
-.report-sbmt-btn
-    margin-top: var(--report-sbmt-mrgn-top)
-    margin-left: var(--report-sbmt-mrgn-left) !important
-    height: var(--report-sbmt-height)
-    width: var(--report-sbmt-width)
+.help-sbmt-btn
+    margin-top: var(--help-sbmt-mrgn-top)
+    margin-left: var(--help-sbmt-mrgn-left) !important
+    height: var(--help-sbmt-height)
+    width: var(--help-sbmt-width)
 </style>
 
 <script>

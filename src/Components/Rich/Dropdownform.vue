@@ -98,10 +98,10 @@
 
 <style lang="sass">
 .dd-form
-    width: var(--dd-form-width)
+    width: var(--dd-form-width) !important
 
 #dropdown-form ul
-    height: var(--dd-form-height)
+    height: var(--dd-form-height) !important
     overflow: auto
 
 #dropdown-form button
