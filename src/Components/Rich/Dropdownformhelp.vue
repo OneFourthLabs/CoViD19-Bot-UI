@@ -90,13 +90,13 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" id="submit_loader" variant="primary" class="report-sbmt-btn">Submit</b-button>
+      <b-button type="submit" id="submit_loader_help" variant="primary" class="report-sbmt-btn">Submit</b-button>
       
       <!-- Loader button -->
-      <!-- <b-button variant="primary" id="loader" style="display:none1;">
+      <b-button class="report-sbmt-btn" variant="primary" disabled id="loader_help" style="display:none">
         <b-spinner small type="grow"></b-spinner>
-        Loading...
-      </b-button> -->
+        Submitting...
+      </b-button>
 
     </b-form>
     </b-dropdown>
@@ -199,9 +199,9 @@ export default {
           emitText = "Submit my request to help";
         }
 
-        // alert("hi");
-        // Loader enable
-        // document.getElementById('submit_loader').style.display = 'none';
+        // Loader
+        document.getElementById("submit_loader_help").style.display = "none";
+        document.getElementById("loader_help").style.display = "";
 
         this.$http.post ( 'https://972d1a69.ngrok.io/post_volunteer', JSON.stringify(this.form) ).then(function () {
           this.onClick()
