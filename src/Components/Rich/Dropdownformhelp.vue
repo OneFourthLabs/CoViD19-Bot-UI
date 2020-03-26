@@ -90,7 +90,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="submit" variant="primary" class="report-sbmt-btn">Submit</b-button>
     </b-form>
     </b-dropdown>
   </div>
@@ -112,6 +112,7 @@
     width: var(--report-input-width)
     margin-top: var(--report-input-mrgn-top)
     margin-left: var(--report-input-mrgn-left)
+    color: var(--text-subtitle)
 
 .report-sbmt-btn
     margin-top: var(--report-sbmt-mrgn-top)
