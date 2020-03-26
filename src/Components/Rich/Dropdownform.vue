@@ -177,8 +177,8 @@ export default {
     onSubmit(evt) {
       evt.preventDefault()
       if(this.form.checked == "share_location") {
-        console.log(JSON.stringify(this.form))
-        return false
+        // console.log(JSON.stringify(this.form))
+        
         this.$http.post ( 'http://34.66.213.160/post_report', JSON.stringify(this.form) ).then(function () {
           this.onClick()
           this.onReset(evt)

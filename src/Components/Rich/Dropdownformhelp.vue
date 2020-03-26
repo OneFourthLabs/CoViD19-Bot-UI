@@ -185,7 +185,7 @@ export default {
       evt.preventDefault()
 
       if(this.form.checked.indexOf("share_location") > -1 && this.form.checked.indexOf("share_contact") > -1) {
-        console.log(JSON.stringify(this.form))
+        // console.log(JSON.stringify(this.form))
 
         let emitText = "Submit my request for help";
         if(this.form.help_type == "volunteer") {
