@@ -84,7 +84,13 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary" class="report-sbmt-btn">Submit</b-button>
+      <b-button id="submit_loader" type="submit" variant="primary" class="report-sbmt-btn">Submit</b-button>
+
+      <!-- Loader button -->
+      <!-- <b-button class="report-sbmt-btn" variant="primary" disabled id="loader" style="display:none">
+        <b-spinner small type="grow"></b-spinner>
+        Submitting...
+      </b-button> -->
     </b-form>
     </b-dropdown>
   </div>
@@ -178,8 +184,12 @@ export default {
       evt.preventDefault()
       if(this.form.checked == "share_location") {
         // console.log(JSON.stringify(this.form))
-        
-        this.$http.post ( 'http://34.66.213.160/post_report', JSON.stringify(this.form) ).then(function () {
+
+        this.$http.post ( 'https://972d1a69.ngrok.io/post_report', JSON.stringify(this.form) ).then(function () {
+          // Loader
+          // document.getElementById("submit_loader").style.display = "none";
+          // document.getElementById("loader").style.display = "";
+
           this.onClick()
           this.onReset(evt)
           this.$emit('dropdownformToTophead', 'Submit my report')
