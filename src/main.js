@@ -8,6 +8,9 @@ import config from './Config'
 import translations from './Translations/translations.json'
 import { register_service_worker } from './Utils'
 
+import VueResource from "vue-resource"
+Vue.use(VueResource);
+
 register_service_worker()
 
 Vue.config.productionTip = false
