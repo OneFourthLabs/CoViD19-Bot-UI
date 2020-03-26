@@ -15,7 +15,7 @@
         </div> -->
 
         <!-- <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret id="dropdown-grouped" text="Dropdown with group" class="m-2"> -->
-        <b-dropdown id="dropdown-grouped" text="Sample Queries" class="m-2">
+        <b-dropdown id="dropdown-grouped" text="Queries" class="m-2">
             <!-- <template v-slot:button-content>
                 <div v-on:click="openNav($event)">
                     &#x1f50d;<span class="sr-only">Search</span>

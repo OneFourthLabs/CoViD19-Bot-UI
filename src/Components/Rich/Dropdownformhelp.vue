@@ -75,13 +75,6 @@
           placeholder="Enter longitude"
           class="report-input"
         ></b-form-input>
-
-        <b-form-input
-          id="input-datetime"
-          v-model="form.datetime"
-          placeholder="Enter date time"
-          class="report-input"
-        ></b-form-input>
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
@@ -126,8 +119,7 @@ export default {
         report_category: null,
         checked: [],
         lat: '',
-        long: '',
-        datetime: ''
+        long: ''
       },
       // report_categories: [{ text: 'Select reporting category', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
       report_categories: [
@@ -208,8 +200,6 @@ export default {
         this.form.lat = ''
         this.form.long = ''
       }
-
-      this.getNow()
     },
     onReset(evt) {
       evt.preventDefault()
@@ -219,7 +209,6 @@ export default {
       this.form.email = ''
       this.form.lat = ''
       this.form.long = ''
-      this.form.datetime = ''
       this.form.report_message = ''
       this.form.report_category = null
       this.form.checked = []
@@ -228,13 +217,6 @@ export default {
       this.$nextTick(() => {
         this.show = true
       })
-    },
-    getNow() {
-      const today = new Date();
-      const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-      const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-      const dateTime = date +' '+ time;
-      this.form.datetime = dateTime;
     }
   }
 }

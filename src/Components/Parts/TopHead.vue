@@ -84,6 +84,7 @@
 <script>
 import Dropdown from '@/Components/Rich/Dropdown.vue'
 import Dropdownform from '@/Components/Rich/Dropdownform.vue'
+import Dropdownformhelp from '@/Components/Rich/Dropdownformhelp.vue'
 
 export default {
     name: 'TopHead',
@@ -94,7 +95,8 @@ export default {
     },
     components: {
         Dropdown,
-        Dropdownform
+        Dropdownform,
+        Dropdownformhelp
     },
     methods: {
         // Triggered when `dropdownToTophead` event is emitted by the child.
