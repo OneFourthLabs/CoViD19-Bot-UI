@@ -23,14 +23,14 @@
         <b-form-radio v-model="form.gender" name="diag_gender-radios" value="Others">Others</b-form-radio>
       </b-form-group>
 
-      <b-form-group id="form-input-diag_bodytemp" label="Please let us know your current body temperature in degree Fahrenheit (Normal body temperature is 98.6°F):" label-for="input-diag_bodytemp" class="diag-input" style="margin-top: 4.5rem !important;">
+      <b-form-group id="form-input-diag_bodytemp" label="Please let us know your current body temperature in degree Fahrenheit (Normal body temperature is 98.6°F):" label-for="input-diag_bodytemp" class="diag-input" style="margin-top: var(--diag-bodytemp-mrgn-top) !important;">
         <b-form-radio v-model="form.bodytemp" name="diag_bodytemp-radios" value="Normal (96°F-98.6°F)">Normal (96°F-98.6°F)</b-form-radio>
         <b-form-radio v-model="form.bodytemp" name="diag_bodytemp-radios" value="Fever (98.6°F-102°F)">Fever (98.6°F-102°F)</b-form-radio>
         <b-form-radio v-model="form.bodytemp" name="diag_bodytemp-radios" value="High Fever (>102°F)">High Fever (>102°F)</b-form-radio>
         <b-form-radio v-model="form.bodytemp" name="diag_bodytemp-radios" value="none">Don't Know</b-form-radio>
       </b-form-group>
 
-      <b-form-group label="Are you experiencing any of the symptoms below (mark all those applicable)" class="diag-input" style="margin-top: 9rem !important;">
+      <b-form-group label="Are you experiencing any of the symptoms below (mark all those applicable)" class="diag-input" style="margin-top: var(--diag-symptm-mrgn-top) !important;">
         <b-form-checkbox-group
           v-model="form.symptoms"
           :options="symptoms_options"
@@ -39,7 +39,7 @@
         ></b-form-checkbox-group>
       </b-form-group>
     
-      <b-form-group label="Additionally, please verify if you are experiencing any of the symptoms below (mark all those applicable)" class="diag-input" style="margin-top: 10rem !important;">
+      <b-form-group label="Additionally, please verify if you are experiencing any of the symptoms below (mark all those applicable)" class="diag-input" style="margin-top: var(--diag-addi-symptm-mrgn-top) !important;">
         <b-form-checkbox-group
           v-model="form.additionalsymptoms"
           :options="additionalsymptoms_options"
@@ -48,14 +48,14 @@
         ></b-form-checkbox-group>
       </b-form-group>
 
-      <b-form-group id="form-input-diag_travelhistory" label="Please select your travel and exposure details" label-for="input-diag_travelhistory" class="diag-input" style="margin-top: 14rem !important;">
+      <b-form-group id="form-input-diag_travelhistory" label="Please select your travel and exposure details" label-for="input-diag_travelhistory" class="diag-input" style="margin-top: var(--diag-trvl-hstry-mrgn-top) !important;">
         <b-form-radio v-model="form.travelhistory" name="diag_travelhistory-radios" value="No Travel History">No Travel History</b-form-radio>
         <b-form-radio v-model="form.travelhistory" name="diag_travelhistory-radios" value="No contact with anyone with Symptom">No contact with anyone with Symptoms</b-form-radio>
         <b-form-radio v-model="form.travelhistory" name="diag_travelhistory-radios" value="History of travel or meeting in affected geographical area in last 14 day">History of travel or meeting in affected geographical area in last 14 days</b-form-radio>
         <b-form-radio v-model="form.travelhistory" name="diag_travelhistory-radios" value="Close Contact with confirmed COVID in last 14 days">Close Contact with confirmed COVID in last 14 days</b-form-radio>
       </b-form-group>
 
-      <b-form-group label="Do you have a history of any of these conditions (mark all those applicable)" class="diag-input" style="margin-top: 13.5rem !important;">
+      <b-form-group label="Do you have a history of any of these conditions (mark all those applicable)" class="diag-input" style="margin-top: var(--diag-cond-mrgn-top) !important;">
         <b-form-checkbox-group
           v-model="form.conditions"
           :options="conditions_options"
@@ -64,7 +64,7 @@
         ></b-form-checkbox-group>
       </b-form-group>
 
-      <b-form-group id="form-input-diag_symptomprogression" label="How have your symptoms progressed over the last 48 hrs?" label-for="input-diag_symptomprogression" class="diag-input" style="margin-top: 12rem !important;">
+      <b-form-group id="form-input-diag_symptomprogression" label="How have your symptoms progressed over the last 48 hrs?" label-for="input-diag_symptomprogression" class="diag-input" style="margin-top: var(--diag-symptm-prgrs-top) !important;">
         <b-form-radio v-model="form.symptomprogression" name="diag_symptomprogression-radios" value="No Change">No Change</b-form-radio>
         <b-form-radio v-model="form.symptomprogression" name="diag_symptomprogression-radios" value="Improved">Improved</b-form-radio>
         <b-form-radio v-model="form.symptomprogression" name="diag_symptomprogression-radios" value="Worsened">Worsened</b-form-radio>
@@ -165,8 +165,8 @@ export default {
     onSubmit(evt) {
       evt.preventDefault()
         // Loader
-        document.getElementById("submit_loader_help").style.display = "none";
-        document.getElementById("loader_help").style.display = "";
+        document.getElementById("submit_loader_diag").style.display = "none";
+        document.getElementById("loader_diag").style.display = "";
 
         console.log(JSON.stringify(this.form))
         return false
