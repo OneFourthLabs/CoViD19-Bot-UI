@@ -196,15 +196,18 @@ export default {
         // console.log(JSON.stringify(this.form))
 
         let emitText = "Submit my request for help";
+        let dataEndPoint = 'https://db-server-dot-corona-bot-gbakse.appspot.com/post_help';
+        
         if(this.form.help_type == "volunteer") {
           emitText = "Submit my request to help";
+          dataEndPoint = 'https://db-server-dot-corona-bot-gbakse.appspot.com/post_volunteer';
         }
 
         // Loader
         document.getElementById("submit_loader_help").style.display = "none";
         document.getElementById("loader_help").style.display = "";
 
-        this.$http.post ( 'https://972d1a69.ngrok.io/post_volunteer', JSON.stringify(this.form) ).then(function () {
+        this.$http.post ( dataEndPoint, JSON.stringify(this.form) ).then(function () {
           this.onClick()
           this.onReset(evt)
           this.$emit('dropdownformhelpToTophead', emitText)

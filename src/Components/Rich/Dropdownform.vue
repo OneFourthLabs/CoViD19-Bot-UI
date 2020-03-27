@@ -189,7 +189,7 @@ export default {
         document.getElementById("submit_loader").style.display = "none";
         document.getElementById("loader").style.display = "";
 
-        this.$http.post ( 'https://972d1a69.ngrok.io/post_report', JSON.stringify(this.form) ).then(function () {
+        this.$http.post ( 'https://db-server-dot-corona-bot-gbakse.appspot.com/post_report', JSON.stringify(this.form) ).then(function () {
           this.onClick()
           this.onReset(evt)
           this.$emit('dropdownformToTophead', 'Submit my report')
