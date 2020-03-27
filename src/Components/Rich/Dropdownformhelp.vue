@@ -217,8 +217,8 @@ export default {
         delete formData["min"];
         delete formData["endtime"];
 
-        // console.log(JSON.stringify(formData))
-        // return false
+        console.log(JSON.stringify(formData))
+        return false
 
         let emitText = "Submit my request for help";
         let dataEndPoint = 'https://db-server-dot-corona-bot-gbakse.appspot.com/post_help';
