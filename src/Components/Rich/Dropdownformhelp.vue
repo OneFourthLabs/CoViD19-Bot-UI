@@ -60,9 +60,13 @@
         ></b-form-textarea>
       </b-form-group>
 
+      <div>
+        <b-form-datepicker id="example-datepicker" v-model="form.enddate" class="mb-2 help-input"></b-form-datepicker>
+      </div>
+
       <b-form-group id="form-input-check">
         <b-form-checkbox-group v-model="form.checked" id="checkboxes-location">
-          <b-form-checkbox value="share_location" class="help-input" style="margin-top: 0rem; margin-bottom: 0rem;" @input="getLocation" required>Agree to share location</b-form-checkbox>
+          <b-form-checkbox value="share_location" class="help-input" style="margin-top: 1rem; margin-bottom: 0rem;" @input="getLocation" required>Agree to share location</b-form-checkbox>
           <b-form-checkbox value="share_contact" class="help-input" style="margin-top: 0rem;" required>Agree to share contact information</b-form-checkbox>
         </b-form-checkbox-group>
       </b-form-group>
@@ -143,7 +147,8 @@ export default {
         lat: '',
         long: '',
         datetime: '',
-        help_type: 'help'
+        help_type: 'help',
+        enddate: ''
       },
       help_categories: [
         { value: null, text: 'Select help category' },

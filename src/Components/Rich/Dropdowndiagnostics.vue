@@ -175,14 +175,17 @@ export default {
         document.getElementById("loader_diag").style.display = "";
 
         console.log(JSON.stringify(this.form))
-        return false
+        // return false
 
-        let dataEndPoint = 'https://db-server-dot-corona-bot-gbakse.appspot.com/post_help';
+        let dataEndPoint = 'https://db-server-dot-corona-bot-gbakse.appspot.com/post_diagnosis';
+        let emitText = "Something went wrong.";
 
-        this.$http.post ( dataEndPoint, JSON.stringify(this.form) ).then(function () {
-          return false
-
-          let emitText = "I have submitted by diagnostic enquiry form with id #xxxx#. Please let me know the details";
+        this.$http.post ( dataEndPoint, JSON.stringify(this.form) ).then(function (res) {
+          if(res.body.token != "") {
+            emitText = "I have submitted by diagnostic enquiry form with id #"+res.body.token+"#. Please let me know the details";
+          } else {
+            alert("Something went wrong.");
+          }
 
           this.onClick()
           this.onReset(evt)
