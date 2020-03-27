@@ -60,9 +60,9 @@
         ></b-form-textarea>
       </b-form-group>
 
-      <div>
+      <!-- <div>
         <b-form-datepicker id="example-datepicker" v-model="form.enddate" class="mb-2 help-input"></b-form-datepicker>
-      </div>
+      </div> -->
 
       <b-form-group id="form-input-check">
         <b-form-checkbox-group v-model="form.checked" id="checkboxes-location">
