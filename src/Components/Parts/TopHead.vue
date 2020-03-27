@@ -15,6 +15,9 @@
 
         <!-- Help dropdown -->
         <Dropdownformhelp class="help-btn" v-on:dropdownformhelpToTophead="onDropdownformhelpClick" />
+
+        <!-- Diagnostics dropdown -->
+        <Dropdowndiagnostics class="diag-btn" v-on:dropdowndiagToTophead="onDropdowndiagClick" />
     </header>
 
 </template>
@@ -86,12 +89,17 @@
 .help-btn
     margin-left: var(--help-btn-mrgn-left)
     margin-top: var(--help-btn-mrgn-top)
+
+.diag-btn
+    margin-left: var(--diag-btn-mrgn-left)
+    margin-top: var(--diag-btn-mrgn-top)
 </style>
 
 <script>
 import Dropdown from '@/Components/Rich/Dropdown.vue'
 import Dropdownform from '@/Components/Rich/Dropdownform.vue'
 import Dropdownformhelp from '@/Components/Rich/Dropdownformhelp.vue'
+import Dropdowndiagnostics from '@/Components/Rich/Dropdowndiagnostics.vue'
 
 export default {
     name: 'TopHead',
@@ -103,7 +111,8 @@ export default {
     components: {
         Dropdown,
         Dropdownform,
-        Dropdownformhelp
+        Dropdownformhelp,
+        Dropdowndiagnostics
     },
     methods: {
         // Triggered when `dropdownToTophead` event is emitted by the child.
@@ -114,12 +123,14 @@ export default {
         },
         onDropdownformClick (value) {
             // alert("In Tophead --> "+value);
-            // this.fromChild = value
             this.$emit('topheadToApp', value)
         },
         onDropdownformhelpClick (value) {
             // alert("In Tophead --> "+value);
-            // this.fromChild = value
+            this.$emit('topheadToApp', value)
+        },
+        onDropdowndiagClick (value) {
+            // alert("In Tophead --> "+value);
             this.$emit('topheadToApp', value)
         }
     },
