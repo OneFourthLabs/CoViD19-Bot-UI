@@ -4,7 +4,7 @@
      <b-form @submit="onSubmit" v-if="show" class="dd-form-help">
 
       <b-form-group id="form-input-help_type" label="" label-for="input-help_type" class="help-input">
-        <b-form-radio v-model="form.help_type" name="help_type-radios" value="help">I Need Help</b-form-radio>
+        <b-form-radio v-model="form.help_type" name="help_type-radios" value="help" @input="getHelpType">I Need Help</b-form-radio>
         <b-form-radio v-model="form.help_type" name="help_type-radios" value="volunteer">I Want to Help</b-form-radio>
       </b-form-group>
 
@@ -60,9 +60,13 @@
         ></b-form-textarea>
       </b-form-group>
 
-      <!-- <div>
-        <b-form-datepicker id="example-datepicker" v-model="form.enddate" class="mb-2 help-input"></b-form-datepicker>
-      </div> -->
+      <div id="enddaate_area" style="display:none;">
+        <b-calendar class="help-input" v-model="form.enddate" :min="form.min" :initial-date="form.min" locale="en"></b-calendar>
+
+        <b-col md="auto">
+          <b-time v-model="form.endtime" locale="en"></b-time>
+        </b-col>
+      </div>
 
       <b-form-group id="form-input-check">
         <b-form-checkbox-group v-model="form.checked" id="checkboxes-location">
@@ -113,7 +117,8 @@
 
 #dropdown-form-help ul
     height: var(--dd-form-help-height) !important
-    overflow: auto
+    overflow-y: auto
+    overflow-x: hidden
     margin-left: var(--dd-form-help-mrgn-left)
 
 #dropdown-form-help button
@@ -136,6 +141,7 @@
 <script>
 export default {
   data() {
+    const now = new Date()
     return {
       form: {
         name: '',
@@ -148,7 +154,9 @@ export default {
         long: '',
         datetime: '',
         help_type: 'help',
-        enddate: ''
+        min: now,
+        enddate: now,
+        endtime: now.toTimeString().slice(0, 8)
       },
       help_categories: [
         { value: null, text: 'Select help category' },
@@ -198,7 +206,19 @@ export default {
       evt.preventDefault()
 
       if(this.form.checked.indexOf("share_location") > -1 && this.form.checked.indexOf("share_contact") > -1) {
-        // console.log(JSON.stringify(this.form))
+        // alert(this.form.enddate+" ----- "+this.form.endtime);
+
+        let seldatetime = new Date(this.form.enddate)
+        const seldate = seldatetime.getFullYear()+'-'+(seldatetime.getMonth()+1)+'-'+seldatetime.getDate();
+        this.form.enddate = seldate +' '+ this.form.endtime;
+
+        // alert(this.form.enddate);
+        const formData = this.form
+        delete formData["min"];
+        delete formData["endtime"];
+
+        // console.log(JSON.stringify(formData))
+        // return false
 
         let emitText = "Submit my request for help";
         let dataEndPoint = 'https://db-server-dot-corona-bot-gbakse.appspot.com/post_help';
@@ -212,7 +232,7 @@ export default {
         document.getElementById("submit_loader_help").style.display = "none";
         document.getElementById("loader_help").style.display = "";
 
-        this.$http.post ( dataEndPoint, JSON.stringify(this.form) ).then(function () {
+        this.$http.post ( dataEndPoint, JSON.stringify(formData) ).then(function () {
           this.onClick()
           this.onReset(evt)
           this.$emit('dropdownformhelpToTophead', emitText)
@@ -251,6 +271,8 @@ export default {
     onReset(evt) {
       evt.preventDefault()
       // Reset our form values
+      const now = new Date()
+
       this.form.name = ''
       this.form.phone = ''
       this.form.email = ''
@@ -261,6 +283,8 @@ export default {
       this.form.help_message = ''
       this.form.help_type = 'help'
       this.form.checked = []
+      this.form.enddate = now
+      this.form.endtime = now.toTimeString().slice(0, 8)
       // Trick to reset/clear native browser form validation state
       this.show = false
       this.$nextTick(() => {
@@ -273,6 +297,20 @@ export default {
       const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
       const dateTime = date +' '+ time;
       this.form.datetime = dateTime;
+    },
+    setDateTimePicker() {
+      const now = new Date();
+      this.form.min = now
+      this.form.enddate = now
+      this.form.endtime = now.toTimeString().slice(0, 8)
+    },
+    getHelpType() {
+      if(this.form.help_type == "volunteer") {
+        this.setDateTimePicker();
+        document.getElementById("enddaate_area").style.display = "";
+      } else {
+        document.getElementById("enddaate_area").style.display = "none";
+      }
     }
   }
 }
