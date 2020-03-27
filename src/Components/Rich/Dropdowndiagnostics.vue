@@ -21,6 +21,7 @@
         <b-form-radio v-model="form.gender" name="diag_gender-radios" value="Male">Male</b-form-radio>
         <b-form-radio v-model="form.gender" name="diag_gender-radios" value="Female">Female</b-form-radio>
         <b-form-radio v-model="form.gender" name="diag_gender-radios" value="Others">Others</b-form-radio>
+        <b-dropdown-divider></b-dropdown-divider>
       </b-form-group>
 
       <b-form-group id="form-input-diag_bodytemp" label="Please let us know your current body temperature in degree Fahrenheit (Normal body temperature is 98.6°F):" label-for="input-diag_bodytemp" class="diag-input" style="margin-top: var(--diag-bodytemp-mrgn-top) !important;">
@@ -28,6 +29,7 @@
         <b-form-radio v-model="form.bodytemp" name="diag_bodytemp-radios" value="Fever (98.6°F-102°F)">Fever (98.6°F-102°F)</b-form-radio>
         <b-form-radio v-model="form.bodytemp" name="diag_bodytemp-radios" value="High Fever (>102°F)">High Fever (>102°F)</b-form-radio>
         <b-form-radio v-model="form.bodytemp" name="diag_bodytemp-radios" value="none">Don't Know</b-form-radio>
+        <b-dropdown-divider></b-dropdown-divider>
       </b-form-group>
 
       <b-form-group label="Are you experiencing any of the symptoms below (mark all those applicable)" class="diag-input" style="margin-top: var(--diag-symptm-mrgn-top) !important;">
@@ -37,6 +39,7 @@
           name="diag_symptoms"
           stacked
         ></b-form-checkbox-group>
+        <b-dropdown-divider></b-dropdown-divider>
       </b-form-group>
     
       <b-form-group label="Additionally, please verify if you are experiencing any of the symptoms below (mark all those applicable)" class="diag-input" style="margin-top: var(--diag-addi-symptm-mrgn-top) !important;">
@@ -46,6 +49,7 @@
           name="diag_additionalsymptoms"
           stacked
         ></b-form-checkbox-group>
+        <b-dropdown-divider></b-dropdown-divider>
       </b-form-group>
 
       <b-form-group id="form-input-diag_travelhistory" label="Please select your travel and exposure details" label-for="input-diag_travelhistory" class="diag-input" style="margin-top: var(--diag-trvl-hstry-mrgn-top) !important;">
@@ -53,6 +57,7 @@
         <b-form-radio v-model="form.travelhistory" name="diag_travelhistory-radios" value="No contact with anyone with Symptom">No contact with anyone with Symptoms</b-form-radio>
         <b-form-radio v-model="form.travelhistory" name="diag_travelhistory-radios" value="History of travel or meeting in affected geographical area in last 14 day">History of travel or meeting in affected geographical area in last 14 days</b-form-radio>
         <b-form-radio v-model="form.travelhistory" name="diag_travelhistory-radios" value="Close Contact with confirmed COVID in last 14 days">Close Contact with confirmed COVID in last 14 days</b-form-radio>
+        <b-dropdown-divider></b-dropdown-divider>
       </b-form-group>
 
       <b-form-group label="Do you have a history of any of these conditions (mark all those applicable)" class="diag-input" style="margin-top: var(--diag-cond-mrgn-top) !important;">
@@ -62,6 +67,7 @@
           name="diag_conditions"
           stacked
         ></b-form-checkbox-group>
+        <b-dropdown-divider></b-dropdown-divider>
       </b-form-group>
 
       <b-form-group id="form-input-diag_symptomprogression" label="How have your symptoms progressed over the last 48 hrs?" label-for="input-diag_symptomprogression" class="diag-input" style="margin-top: var(--diag-symptm-prgrs-top) !important;">
