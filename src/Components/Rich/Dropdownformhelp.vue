@@ -64,7 +64,7 @@
         <b-calendar class="help-input" v-model="form.enddate" :min="form.min" :initial-date="form.min" locale="en"></b-calendar>
 
         <b-col md="auto">
-          <b-time v-model="form.endtime" locale="en"></b-time>
+          <b-time style="color: var(--text-subtitle);" v-model="form.endtime" locale="en"></b-time>
         </b-col>
       </div>
 
