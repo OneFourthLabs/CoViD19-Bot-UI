@@ -180,7 +180,7 @@ export default {
             { value: { "main": 'Medical supplies', "sub": 'Sanitisers' }, text: 'Sanitisers' }
           ]
         },
-        {
+        /*{
           label: 'Violations',
           options: [
             { value: { "main": 'Violations', "sub": 'Hoarding' }, text: 'Hoarding' },
@@ -196,7 +196,7 @@ export default {
             { value: { "main": 'Emergencies', "sub": 'I need to see a doctor' }, text: 'I need to see a doctor' },
             { value: { "main": 'Emergencies', "sub": 'I need an ambulance' }, text: 'I need an ambulance' }
           ]
-        }
+        }*/
       ],
       show: true
     }
@@ -216,6 +216,9 @@ export default {
         const formData = this.form
         delete formData["min"];
         delete formData["endtime"];
+
+        formData["datetime_timestamp"] = Math.round((new Date(formData["datetime"])).getTime() / 1000)
+        formData["enddate_timestamp"] = Math.round((new Date(formData["enddate"])).getTime() / 1000)
 
         // console.log(JSON.stringify(formData))
         // return false

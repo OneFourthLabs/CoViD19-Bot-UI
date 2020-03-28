@@ -138,7 +138,7 @@ export default {
       },
       report_categories: [
         { value: null, text: 'Select reporting category' },
-        {
+        /*{
           label: 'Household items',
           options: [
             { value: { "main": 'Household items', "sub": 'Vegetables' }, text: 'Vegetables' },
@@ -157,7 +157,7 @@ export default {
             { value: { "main": 'Medical supplies', "sub": 'Gloves' }, text: 'Gloves' },
             { value: { "main": 'Medical supplies', "sub": 'Sanitisers' }, text: 'Sanitisers' }
           ]
-        },
+        },*/
         {
           label: 'Violations',
           options: [
@@ -189,7 +189,12 @@ export default {
         document.getElementById("submit_loader").style.display = "none";
         document.getElementById("loader").style.display = "";
 
-        this.$http.post ( 'https://db-server-dot-corona-bot-gbakse.appspot.com/post_report', JSON.stringify(this.form) ).then(function () {
+        const formData = this.form
+        formData["datetime_timestamp"] = Math.round((new Date(formData["datetime"])).getTime() / 1000)
+        // console.log(JSON.stringify(this.form))
+        // return false
+
+        this.$http.post ( 'https://db-server-dot-corona-bot-gbakse.appspot.com/post_report', JSON.stringify(formData) ).then(function () {
           this.onClick()
           this.onReset(evt)
           this.$emit('dropdownformToTophead', 'Submit my report')
