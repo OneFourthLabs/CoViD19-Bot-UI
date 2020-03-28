@@ -17,7 +17,7 @@
         <Dropdownformhelp class="help-btn" v-on:dropdownformhelpToTophead="onDropdownformhelpClick" />
 
         <!-- Diagnostics dropdown -->
-        <Dropdowndiagnostics class="diag-btn" v-on:dropdowndiagToTophead="onDropdowndiagClick" />
+        <!-- <Dropdowndiagnostics class="diag-btn" v-on:dropdowndiagToTophead="onDropdowndiagClick" /> -->
     </header>
 
 </template>

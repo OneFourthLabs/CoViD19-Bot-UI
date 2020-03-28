@@ -37,15 +37,15 @@
                 <b-dropdown-divider></b-dropdown-divider>
 
                 <b-dropdown-group id="dropdown-group-3" header="Recommendations">
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Should I spray alcohol on my body</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Should I take a flu shot</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Should I rinse my noise</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Is it safe to travel by air</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Is it safe to sit in an air conditioned office </b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Is it safe to go for a walk</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Should I eat garlic</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Should I take H1NI vaccine</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Can spraying alcohol or chlorine all over your body kill the new coronavirus?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Is it safe to sit in an air-conditioned office</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Can eating chyavanprash help against coronavirus?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Should I take H1N1 vaccine?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How long must I observe quarantine?</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Should I take a flu shot</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Can coronavirus be transmitted in areas with hot and humid climates?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Should I spray alcohol on my body</b-dropdown-item-button>
                 </b-dropdown-group>
 
                 <b-dropdown-divider></b-dropdown-divider>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-dropdown id="dropdown-form-help" text="Help" ref="dropdown" class="m-2">
+    <b-dropdown id="dropdown-form-help" text="Help/Volunteer" ref="dropdown" class="m-2">
      <b-form @submit="onSubmit" v-if="show" class="dd-form-help">
 
       <b-form-group id="form-input-help_type" label="" label-for="input-help_type" class="help-input">
