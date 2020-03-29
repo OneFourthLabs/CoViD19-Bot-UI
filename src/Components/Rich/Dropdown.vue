@@ -1,42 +1,45 @@
 <template>
-    <!-- <div>
-        <b-dropdown size="lg"  variant="link" toggle-class="text-decoration-none" no-caret  v-model="querySelection">
-            <template v-slot:button-content>
-                &#x1f50d;<span class="sr-only">Search</span>
-            </template>
-
-            <b-dropdown-item class="dd-options" v-for="option in outlineOptions" :value="option.value" :key="option.id" v-on:click="emitToTophead($event)">{{option.text}}</b-dropdown-item>
-        </b-dropdown>
-    </div> -->
-
     <div>
-        <!-- <div id="myNav" class="overlay" v-on:click="navClick($event)">
-            <a href="javascript:void(0)" class="closebtn" v-on:click="closeNav($event)">&times;</a>   
-        </div> -->
-
-        <!-- <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret id="dropdown-grouped" text="Dropdown with group" class="m-2"> -->
         <b-dropdown id="dropdown-grouped" text="Queries" class="m-2">
-            <!-- <template v-slot:button-content>
-                <div v-on:click="openNav($event)">
-                    &#x1f50d;<span class="sr-only">Search</span>
+
+            <transition name="with-mode-fade" mode="out-in">
+                <div v-if="cat_on">
+                    <b-dropdown-group header="Select Category" style="font-weight: bold;"></b-dropdown-group>
+                    <b-dropdown-divider></b-dropdown-divider>
+                    <b-dropdown-group key="on" @click="traversCat('C', 'cat_on', 'subcat_1_on')" header="Stats"></b-dropdown-group>
                 </div>
-            </template> -->
-
-                <b-dropdown-group id="dropdown-group-1" header="Stats">
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many deaths have occured in Italy over the last 10 days?</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Which Indian state has the highest number of infected people?</b-dropdown-item-button>
+                
+                <b-dropdown-group v-else-if="subcat_1_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_1_on')" id="dropdown-group-1" header="< Back to Category">
+                    <b-dropdown-divider></b-dropdown-divider>
+                  
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many recovered in India in March?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">What is the number of deaths in New York?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Which state in India has the maximum number of cases?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many cases in India since last week?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many cases was confirmed in Tamil Nadu since last 5 days?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many cases in Maharastra from March 1 to March 10?</b-dropdown-item-button>
                 </b-dropdown-group>
+            </transition>
 
-                <b-dropdown-divider></b-dropdown-divider>
+            <transition name="with-mode-fade" mode="out-in">
+                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_2_on')" header="Plots"></b-dropdown-group>
 
-                <b-dropdown-group id="dropdown-group-2" header="Plots">
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Show a plot of number of infected people in Maharashtra</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Draw a line plot of number of people recovered in China over the month of March.</b-dropdown-item-button>
+                <b-dropdown-group v-else-if="subcat_2_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_2_on')" id="dropdown-group-2" header="< Back to Category">
+                    <b-dropdown-divider></b-dropdown-divider>
+
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Plot the total number of cases in Italy from January.</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Draw a line plot for number of deaths in China in March.</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Plot a bar graph of number of daily cases in USA?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Draw a line chart of total cases in Wuhan since February.</b-dropdown-item-button>
                 </b-dropdown-group>
+            </transition>
 
-                <b-dropdown-divider></b-dropdown-divider>
+            <transition name="with-mode-fade" mode="out-in">
+                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_3_on')" header="Recommendations"></b-dropdown-group>
 
-                <b-dropdown-group id="dropdown-group-3" header="Recommendations">
+                <b-dropdown-group v-else-if="subcat_3_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_3_on')" id="dropdown-group-3" header="< Back to Category">
+                    <b-dropdown-divider></b-dropdown-divider>
+
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Is it safe to go for a walk</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Can spraying alcohol or chlorine all over your body kill the new coronavirus?</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Is it safe to sit in an air-conditioned office</b-dropdown-item-button>
@@ -47,10 +50,14 @@
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Can coronavirus be transmitted in areas with hot and humid climates?</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Should I spray alcohol on my body</b-dropdown-item-button>
                 </b-dropdown-group>
+            </transition>
 
-                <b-dropdown-divider></b-dropdown-divider>
+            <transition name="with-mode-fade" mode="out-in">
+                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_4_on')" header="Info"></b-dropdown-group>
 
-                <b-dropdown-group id="dropdown-group-4" header="Info">
+                <b-dropdown-group v-else-if="subcat_4_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_4_on')" id="dropdown-group-4" header="< Back to Category">
+                    <b-dropdown-divider></b-dropdown-divider>
+
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">What is coronavirus</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How long does the treatment take</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How long should I stay in quarantine</b-dropdown-item-button>
@@ -65,26 +72,23 @@
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">What is the difference between isolation and quarantine</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">What is the difference between MERS and SARS</b-dropdown-item-button>
                 </b-dropdown-group>
+            </transition>
 
-                <b-dropdown-divider></b-dropdown-divider>
+            <transition name="with-mode-fade" mode="out-in">
+                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_5_on')" header="Procedures"></b-dropdown-group>
 
-                <b-dropdown-group id="dropdown-group-5" header="Procedures">
+                <b-dropdown-group v-else-if="subcat_5_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_5_on')" id="dropdown-group-5" header="< Back to Category">
+                    <b-dropdown-divider></b-dropdown-divider>
+
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How to disinfect my phone</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How to disinfect my car</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How to disinfect my room</b-dropdown-item-button>
                 </b-dropdown-group>
-
-
-                <!-- <b-dropdown-divider></b-dropdown-divider>
-
-                <b-dropdown-group id="dropdown-group-2" header="Plots">
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)"></b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)"></b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)"></b-dropdown-item-button>
-                </b-dropdown-group>
-
-                <b-dropdown-divider></b-dropdown-divider> -->
+            </transition>
         </b-dropdown>
+
+
+        <!-- <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)"></b-dropdown-item-button> -->
     </div>
 </template>
 
@@ -94,6 +98,11 @@
 
 .sr-only
     margin-left: 21.5rem
+
+#dropdown-grouped ul
+    width: var(--overlay-dd-width) !important
+    overflow-y: auto
+    overflow-x: hidden
 
 .dd-options button
     width: var(--overlay-dd-width)
@@ -128,78 +137,50 @@
 .dropdown-divider 
     border-top: 1px solid #bbbbbb !important
 
-// .overlay 
-//     height: 100%
-//     width: 0
-//     display: none
-//     position: fixed
-//     z-index: 1
-//     top: 0
-//     left: 0
-//     background-color: var(--overlay-background-color)
-//     background-color: var(--overlay-background-color-a)
-//     overflow-x: hidden
-//     transition: 0.5s
+.with-mode-fade-enter-active, .with-mode-fade-leave-active
+    transition: opacity .5s
 
-// .overlay a 
-//     padding: 8px
-//     text-decoration: none
-//     font-size: 36px
-//     color: var(--text)
-//     display: block
-//     transition: 0.3s
-
-// .overlay .closebtn 
-//     position: absolute
-//     top: var(--overlay-close-top)
-//     right: var(--overlay-close-right)
-//     font-size: var(--overlay-close-font-size)
+.with-mode-fade-enter, .with-mode-fade-leave-active
+    opacity: 0
 </style>
-
-
 
 <script>
 export default {
     data(){
         return {
             querySelection: '',
-            // outlineOptions: [
-            //     { id: 0, text: 'How many deaths have occured in Italy over the last 10 days?', value: 'How many deaths have occured in Italy over the last 10 days?' },
-            //     { id: 1, text: 'Which Indian state has the highest number of infected people?', value: 'Which Indian state has the highest number of infected people?' },
-            //     { id: 2, text: 'Show a plot of number of infected people in Maharashtra', value: 'Show a plot of number of infected people in Maharashtra' },
-            //     { id: 3, text: 'Draw a line plot of number of people recovered in China over the month of March.', value: 'Draw a line plot of number of people recovered in China over the month of March.' }
-            // ]
+            cat_on: true,
+            subcat_1_on: false,
+            subcat_2_on: false,
+            subcat_3_on: false,
+            subcat_4_on: false,
+            subcat_5_on: false
         }
     },
-    // props: ['query-msg'],
     methods: {
         // Define the method that emits data to the parent as the first parameter to `$emit()`.
         // This is referenced in the <template> call in the parent. The second parameter is the payload.
         emitToTophead (event) {
             // alert(event.target.innerHTML);
+
             this.$emit('dropdownToTophead', event.target.innerHTML)
-            // this.closeNav(event)
         },
-        // openNav(event) {
-        //     console.log(event);
-        //     document.getElementById("myNav").style.width = "100%";
-        //     document.getElementById("myNav").style.display = "block";
-        // },
-        // closeNav(event) {
-        //     console.log(event);
-        //     document.getElementById("myNav").style.width = "0%";
-        //     setTimeout(function(){ 
-        //         document.getElementById("myNav").style.display = "none";
-        //         document.getElementById("myNav").style.width = "100%";
-        //     }, 500);
-        // },
-        // navClick(event) {
-        //     const element = document.querySelector("#dropdown-grouped");
-        //     // alert(element.classList.contains("show"));
-        //     // if(element.classList.contains("show") == false) {
-        //         this.closeNav(event);
-        //     // }
-        // }
+        // This is for the category/subcategory traversal feature
+        traversCat(cat_type, cat_var, sub_cat_var) {
+            // alert(cat_type + " ---- " + cat_var + " ---- " + sub_cat_var);
+
+            if(cat_type != "" && cat_var != "") {
+                if(cat_type == "C") {
+                    this[cat_var] = false; 
+                    this[sub_cat_var] = true;
+                } else  if(cat_type == "S") {
+                    this[sub_cat_var] = false;
+                    setTimeout(() => { 
+                        this[cat_var] = true
+                    }, 500)
+                }
+            }
+        }
     }
 }
 </script>
