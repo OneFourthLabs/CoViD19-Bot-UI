@@ -110,6 +110,9 @@
     overflow-y: auto
     overflow-x: hidden
 
+#dropdown-grouped button
+    background-color: var(--header-btn-bg-color)
+
 .dd-options button
     width: var(--overlay-dd-width)
     word-wrap: break-word !important

@@ -123,6 +123,7 @@
 
 #dropdown-form-help button
     margin-left: 1rem
+    background-color: var(--header-btn-bg-color)
 
 .help-input
     height: var(--help-input-height) 

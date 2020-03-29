@@ -2,7 +2,7 @@
     <main id="app" style="max-width: 30rem;margin: 0 auto;">
         <!-- TopHead is the header with the information about the app -->
         <!-- <TopHead v-if="app && messages.length > 0" :app="app" style="background-color: #313742;"  v-on:topheadToApp="onDataFromTophead"> -->
-        <TopHead :app="app" style="background-color: #313742;"  v-on:topheadToApp="onDataFromTophead">
+        <TopHead :app="app" style="background-color: var(--header-bg-color);"  v-on:topheadToApp="onDataFromTophead">
             <!-- Audio toggle (on the top right corner), used to toggle the audio output, default mode is defined in the settings -->
             <button
                 class="audio-toggle"

@@ -106,6 +106,7 @@
 
 #dropdown-form button
     margin-left: 1rem
+    background-color: var(--header-btn-bg-color)
 
 .report-input
     height: var(--report-input-height) 
