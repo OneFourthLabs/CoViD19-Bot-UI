@@ -6,10 +6,10 @@
                 <div v-if="cat_on">
                     <b-dropdown-group header="Select Category" style="font-weight: bold;"></b-dropdown-group>
                     <b-dropdown-divider></b-dropdown-divider>
-                    <b-dropdown-group key="on" @click="traversCat('C', 'cat_on', 'subcat_1_on')" header="Stats"></b-dropdown-group>
+                    <b-dropdown-group key="on" @click="traversCat('C', 'cat_on', 'subcat_1_on')" header="Stats" class="dd-options-parent dd-sm"></b-dropdown-group>
                 </div>
                 
-                <b-dropdown-group v-else-if="subcat_1_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_1_on')" id="dropdown-group-1" header="< Back to Category">
+                <b-dropdown-group v-else-if="subcat_1_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_1_on')" id="dropdown-group-1" header="< Back to Category" class="dd-options-parent">
                     <b-dropdown-divider></b-dropdown-divider>
                   
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many recovered in India in March?</b-dropdown-item-button>
@@ -22,9 +22,9 @@
             </transition>
 
             <transition name="with-mode-fade" mode="out-in">
-                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_2_on')" header="Plots"></b-dropdown-group>
+                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_2_on')" header="Plots" class="dd-options-parent dd-sm"></b-dropdown-group>
 
-                <b-dropdown-group v-else-if="subcat_2_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_2_on')" id="dropdown-group-2" header="< Back to Category">
+                <b-dropdown-group v-else-if="subcat_2_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_2_on')" id="dropdown-group-2" header="< Back to Category" class="dd-options-parent">
                     <b-dropdown-divider></b-dropdown-divider>
 
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Plot the total number of cases in Italy from January.</b-dropdown-item-button>
@@ -35,9 +35,9 @@
             </transition>
 
             <transition name="with-mode-fade" mode="out-in">
-                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_3_on')" header="Recommendations"></b-dropdown-group>
+                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_3_on')" header="Recommendations" class="dd-options-parent dd-sm"></b-dropdown-group>
 
-                <b-dropdown-group v-else-if="subcat_3_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_3_on')" id="dropdown-group-3" header="< Back to Category">
+                <b-dropdown-group v-else-if="subcat_3_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_3_on')" id="dropdown-group-3" header="< Back to Category" class="dd-options-parent">
                     <b-dropdown-divider></b-dropdown-divider>
 
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Is it safe to go for a walk</b-dropdown-item-button>
@@ -53,9 +53,9 @@
             </transition>
 
             <transition name="with-mode-fade" mode="out-in">
-                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_4_on')" header="Info"></b-dropdown-group>
+                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_4_on')" header="Info" class="dd-options-parent dd-sm"></b-dropdown-group>
 
-                <b-dropdown-group v-else-if="subcat_4_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_4_on')" id="dropdown-group-4" header="< Back to Category">
+                <b-dropdown-group v-else-if="subcat_4_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_4_on')" id="dropdown-group-4" header="< Back to Category" class="dd-options-parent">
                     <b-dropdown-divider></b-dropdown-divider>
 
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">What is coronavirus</b-dropdown-item-button>
@@ -75,9 +75,9 @@
             </transition>
 
             <transition name="with-mode-fade" mode="out-in">
-                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_5_on')" header="Procedures"></b-dropdown-group>
+                <b-dropdown-group v-if="cat_on" key="on" @click="traversCat('C', 'cat_on', 'subcat_5_on')" header="Procedures" class="dd-options-parent dd-sm"></b-dropdown-group>
 
-                <b-dropdown-group v-else-if="subcat_5_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_5_on')" id="dropdown-group-5" header="< Back to Category">
+                <b-dropdown-group v-else-if="subcat_5_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_5_on')" id="dropdown-group-5" header="< Back to Category" class="dd-options-parent">
                     <b-dropdown-divider></b-dropdown-divider>
 
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How to disinfect my phone</b-dropdown-item-button>
@@ -93,6 +93,12 @@
 </template>
 
 <style lang="sass">
+.dd-options-parent
+    cursor: pointer
+
+.dd-sm header.dropdown-header:hover
+    background-color: var(--dd-hoover-bg-color)
+
 .m-2
     margin-left: 1.5rem !important
 
