@@ -13,7 +13,7 @@
                     <b-dropdown-divider></b-dropdown-divider>
                   
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many recovered in India in March?</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">What is the number of deaths in New York?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">What is the number of deaths in Delhi?</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Which state in India has the maximum number of cases?</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many cases in India since last week?</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many cases was confirmed in Tamil Nadu since last 5 days?</b-dropdown-item-button>
@@ -27,7 +27,7 @@
                 <b-dropdown-group v-else-if="subcat_2_on" key="off" @click="traversCat('S', 'cat_on', 'subcat_2_on')" id="dropdown-group-2" header="< Back to Category" class="dd-options-parent">
                     <b-dropdown-divider></b-dropdown-divider>
 
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Plot the total number of cases in Italy from January.</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Plot the total number of cases in italy from february to march.</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Draw a line plot for number of deaths in China in March.</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Plot a bar graph of number of daily cases in USA?</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Draw a line chart of total cases in Wuhan since February.</b-dropdown-item-button>
@@ -61,8 +61,8 @@
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">What is coronavirus</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How long does the treatment take</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How long should I stay in quarantine</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How long will it take for me to fully recover</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How long does the virus survive on plastic</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">What is the difference between virus and bacteria</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Are there any drugs or vaccines against COVID-19?</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How long does the virus survive on glass</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How long does the virus survive on metal surfaces</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Can the disease spread from an asymptomatic person</b-dropdown-item-button>
@@ -99,6 +99,9 @@
 .dd-sm header.dropdown-header:hover
     background-color: var(--dd-hoover-bg-color)
 
+.dd-options:hover
+    background-color: var(--dd-hoover-bg-color)
+
 .m-2
     margin-left: 1.5rem !important
 
@@ -109,8 +112,9 @@
     width: var(--overlay-dd-width) !important
     overflow-y: auto
     overflow-x: hidden
+    background-color: var(--component-background)
 
-#dropdown-grouped button
+#dropdown-grouped button.dropdown-toggle
     background-color: var(--header-btn-bg-color)
 
 .dd-options button
@@ -119,7 +123,7 @@
     padding: 0.5rem 1.7rem !important
     white-space: unset !important
     line-height: 2
-    color: var(--text-secondary)
+    color: var(--text-subtitle)
     text-align: justify
     text-justify: inter-word
 

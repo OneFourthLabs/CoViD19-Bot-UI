@@ -120,6 +120,7 @@
     overflow-y: auto
     overflow-x: hidden
     margin-left: var(--dd-form-help-mrgn-left)
+    background-color: var(--component-background)
 
 #dropdown-form-help button
     margin-left: 1rem

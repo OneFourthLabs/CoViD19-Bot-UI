@@ -6,7 +6,7 @@
 .bubble
     padding: 12px
     border-radius: 40px
-    color: var(--text)
+    color: var(--text-mod)
     border: 1px solid var(--border)
     display: inline-block
     position: relative

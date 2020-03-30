@@ -107,6 +107,7 @@
     height: var(--dd-form-diag-height) !important
     overflow: auto
     margin-left: var(--dd-form-diag-mrgn-left)
+    background-color: var(--component-background)
 
 #dropdown-form-diag button
     margin-left: 1rem

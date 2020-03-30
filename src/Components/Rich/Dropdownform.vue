@@ -103,6 +103,7 @@
 #dropdown-form ul
     height: var(--dd-form-height) !important
     overflow: auto
+    background-color: var(--component-background)
 
 #dropdown-form button
     margin-left: 1rem

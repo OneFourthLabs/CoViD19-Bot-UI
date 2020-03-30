@@ -76,10 +76,12 @@
     box-sizing: border-box
     border: none
     padding: 10px 12px
-    color: var(--text)
+    // color: var(--text)
+    color: var(--text-secondary)
     border-radius: 40px
     flex: 1 0 0
-    background-color: var(--element-background)
+    // background-color: var(--element-background)
+    background-color: var(--header-bg-color)
 
     &:focus
         background-color: transparent
@@ -90,14 +92,19 @@
     margin-left: 6px
     border-radius: 50%
     cursor: pointer
-    background-color: var(--element-background)
-    color: var(--text)
+    // background-color: var(--element-background)
+    background-color: var(--header-bg-color)
+    color: var(--text-secondary)
+    // color: var(--text)
     font-size: 24px
     display: flex
 
     &.mic_active
         background-color: #F44336
         color: white
+
+::placeholder
+    color: var(--text-secondary)
 
 // .suggestion-btn
 //     position: absolute !important
