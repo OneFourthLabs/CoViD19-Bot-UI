@@ -6,11 +6,11 @@
 .bubble
     padding: 12px
     border-radius: 40px
-    color: var(--text-mod)
-    border: 1px solid var(--border)
+    color: var(--text-bubble)
+    border: 1px solid var(--background-bubble)
     display: inline-block
     position: relative
-    background-color: var(--background)
+    background-color: var(--background-bubble)
     min-width: 26px
     border-top-left-radius: 0px
 
@@ -23,9 +23,9 @@
         margin-left: -1px
 
     &.me
-        background-color: var(--element-background)
-        border: 1px solid var(--element-background)
-        color: var(--text-secondary)
+        background-color: var(--element-background-bubble)
+        border: 1px solid var(--element-background-bubble)
+        color: var(--text-secondary-bubble)
         border-top-left-radius: 40px
 
         &::before

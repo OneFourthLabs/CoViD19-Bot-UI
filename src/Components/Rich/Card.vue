@@ -38,12 +38,14 @@
 .card-subtitle
     font-size: 16px
     line-height: 24px
-    color: var(--text-subtitle)
+    // color: var(--text-subtitle)
+    color: var(--text)
 
 .card-text
     line-height: 24px
     font-size: 14px
-    color: var(--text-secondary)
+    // color: var(--text-secondary)
+    color: var(--text)
     white-space: normal
 </style>
 

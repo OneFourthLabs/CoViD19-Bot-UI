@@ -18,8 +18,11 @@
     display: inline-block
     padding: 8px 12px
     border-radius: 40px
-    border: 1px solid var(--border)
-    color: var(--text)
+    // border: 1px solid var(--border)
+    // color: var(--text)
+    background-color: var(--background-bubble)
+    border: 1px solid var(--background-bubble)
+    color: var(--text-secondary-bubble)
     cursor: pointer
     margin-right: 5px
     font-weight: 500
