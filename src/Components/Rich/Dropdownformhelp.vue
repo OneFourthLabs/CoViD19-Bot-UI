@@ -112,6 +112,14 @@
 </template>
 
 <style lang="sass">
+#enddaate_area div.b-calendar div.b-calendar-inner div.b-calendar-nav button
+  background-color: #ffffff
+
+#enddaate_area div.col-md-auto div.b-time div.d-flex div.b-form-spinbutton button
+  background-color: #ffffff
+  margin-left: -0.05rem
+
+
 .dd-form-help
     width: var(--dd-form-help-width) !important
 
