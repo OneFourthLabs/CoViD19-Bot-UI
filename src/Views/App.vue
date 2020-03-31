@@ -346,7 +346,7 @@ export default {
             loading: false,
             error: null,
             client: new df.Client(this.config.gateway).connect(),
-            fromChild: 'asdasd'
+            fromChild: ''
         }
     },
     computed: {
@@ -510,6 +510,10 @@ export default {
         onDataFromTophead (value) {
             // alert("In App --> "+value);
             this.fromChild = value
+
+            setTimeout(() => { 
+                this.fromChild = ''
+            }, 1000)
         },
         // Triggered when `childToParent` event is emitted by the child.
         // onChildClick (value) {
