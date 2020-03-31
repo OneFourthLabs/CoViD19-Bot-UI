@@ -17,7 +17,7 @@
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">Which state in India has the maximum number of cases?</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many cases in India since last week?</b-dropdown-item-button>
                     <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many cases was confirmed in Tamil Nadu since last 5 days?</b-dropdown-item-button>
-                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many cases in Maharastra from March 11 to March 20?</b-dropdown-item-button>
+                    <b-dropdown-item-button class="dd-options" v-on:click="emitToTophead($event)">How many cases in Maharashtra from March 11 to March 20?</b-dropdown-item-button>
                 </b-dropdown-group>
             </transition>
 

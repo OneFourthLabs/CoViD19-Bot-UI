@@ -41,6 +41,7 @@
           v-model="form.report_category"
           :options="report_categories"
           class="report-input"
+          @change="catChange"
           required
         ></b-form-select>
       </b-form-group>
@@ -176,6 +177,12 @@ export default {
             { value: { "main": 'Emergencies', "sub": 'I need to see a doctor' }, text: 'I need to see a doctor' },
             { value: { "main": 'Emergencies', "sub": 'I need an ambulance' }, text: 'I need an ambulance' }
           ]
+        },
+        {
+          label: 'Others',
+          options: [
+            { value: { "main": 'Others', "sub": 'Others' }, text: 'Others' }
+          ]
         }
       ],
       show: true
@@ -204,6 +211,17 @@ export default {
       } else {
         alert("Pleae click the checkbox and agree to share location details")
         return false
+      }
+    },
+    catChange(chngVal) {
+      // console.log(chngVal);
+
+      if(chngVal.sub == "Others") {
+        document.getElementById("input-report_message").required = true;
+        document.getElementById("input-report_message").placeholder = "Enter your message";
+      } else {
+        document.getElementById("input-report_message").required = false;
+        document.getElementById("input-report_message").placeholder = "Enter your message (optional)";
       }
     },
     onClick() {
