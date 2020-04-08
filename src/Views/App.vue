@@ -417,14 +417,30 @@ export default {
         }
 
         else {
-            this.client.get()
+            /*this.client.get()
             .then(agent => {
                 this.app = agent
                 if (this.history()) sessionStorage.setItem('agent', JSON.stringify(agent))
             })
             .catch(error => {
                 this.error = error.message
+            })*/
+
+            /* Make post request to custom endpoint */
+            let acDetResponseEp = 'https://webhook-dot-corona-bot-gbakse.appspot.com/get_dialogflow_account_details';
+            
+            this.$http.get ( acDetResponseEp ).then(function (epRes) {
+                this.app = epRes.body
+                if (this.history()) sessionStorage.setItem('agent', JSON.stringify(epRes.body))
+
+                /* (optional) log responses */
+                console.log("========== RESPONSE  ==========")
+                console.log(epRes.body)
             })
+            .catch(error => {
+                this.error = error.message
+            })
+            // --
         }
     },
     methods: {
@@ -461,8 +477,12 @@ export default {
             this.loading = true
             this.error = null
 
+            // (optional) log request
+            // console.log("========== REQUEST  ==========")
+            // console.log(request)
+
             /* Make the request to gateway */
-            this.client.send(request)
+            /*this.client.send(request)
             .then(response => {
                 this.messages.push(response)
                 this.handle(response) // <- trigger the handle function (explanation below)
@@ -471,7 +491,24 @@ export default {
             .catch(error => {
                 this.error = error.message
             })
+            .then(() => this.loading = false)*/
+            // Request to gateway end
+
+            /* Make post request to custom endpoint */
+            let queryResEp = 'https://webhook-dot-corona-bot-gbakse.appspot.com/get_response_for_query';
+            
+            this.$http.post ( queryResEp, JSON.stringify(request) ).then(function (epRes) {
+                this.messages.push(epRes.body)
+                this.handle(epRes.body) // <- trigger the handle function (explanation below)
+                /* (optional) log responses */
+                // console.log("========== RESPONSE  ==========")
+                // console.log(epRes.body)
+            })
+            .catch(error => {
+                this.error = error.message
+            })
             .then(() => this.loading = false)
+            // --
         },
         handle(response){
             /* This function is used for speech output */
