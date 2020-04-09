@@ -1,5 +1,5 @@
 module.exports = {
     lintOnSave: false,
-    publicPath: '',
+    publicPath: '/CoViD19-Bot-UI/',
     productionSourceMap: false
 }
