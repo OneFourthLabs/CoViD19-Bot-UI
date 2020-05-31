@@ -25,4 +25,4 @@ export default {
 }
 ```
 
-[Code taken from](https://github.com/mishushakov/dialogflow-web-v2)
+## [Code taken from](https://github.com/mishushakov/dialogflow-web-v2)
